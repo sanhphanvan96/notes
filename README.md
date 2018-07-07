@@ -14,7 +14,7 @@
 
 ## [Install Docker](https://www.ptrace-security.com/2017/06/14/hackontuesday-episode-7-how-to-install-docker-on-kali-linux-2017-1/)
 
-## [Install Docker Compose]()
+## [Install Docker Compose](https://docs.docker.com/compose/install/)
 
 - sudo curl -L https://github.com/docker/compose/releases/download/1.21.2/docker-compose-$(uname -s)-$(uname -m) -o /usr/local/bin/docker-compose
 
@@ -82,9 +82,11 @@ sudo apt-get install -y nodejs
 
 ## 1. Cannot use apt-get 
 
+```
 E: Could not get lock /var/lib/dpkg/lock - open (11 Resource temporarily unavailable)
 
 E: Unable to lock the administration directory (/var/lib/dpkg/) is another process using it?
+```
 
 - sudo rm /var/lib/apt/lists/lock
 
@@ -96,7 +98,7 @@ E: Unable to lock the administration directory (/var/lib/dpkg/) is another proce
 
 - sudo chown sanhpv /var/run/docker.sock
 
-## 3. Access denied for user 'root'@'localhost'
+## 3. MySQL: Access denied for user 'root'@'localhost'
 
 - sudo service mysql stop
 
