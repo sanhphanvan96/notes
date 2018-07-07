@@ -78,7 +78,7 @@ sudo apt-get install -y nodejs
      echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
      sudo apt-get update && sudo apt-get install yarn
 ```
-## Git on the Server - Generating Your SSH Public Key
+## [Git on the Server - Generating Your SSH Public Key](https://help.github.com/articles/connecting-to-github-with-ssh/)
 
 - Check to see if you have a key already by going to that directory and listing the contents
 ```
@@ -100,6 +100,17 @@ Your public key has been saved in /home/sanhpv/.ssh/id_rsa.pub.
 The key fingerprint is:
 d0:82:24:8e:d7:f1:bb:9b:33:53:96:93:49:da:9b:e3 sanhpv@me.com
 ```
+- The public keys look something like this
+```
+$ cat ~/.ssh/id_rsa.pub
+ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEAklOUpkDHrfHY17SbrmTIpNLTGK9Tjom/BWDSU
+GPl+nafzlHDTYW7hdI4yZ5ew18JH4JW9jbhUFrviQzM7xlELEVf4h9lFX5QVkbPppSwg0cda3
+Pbv7kOdJ/MTyBlWXFCR+HAo3FXRitBqxiX1nKhXpHAZsMciLq8V6RjsNAQwdsdMFvSlVK/7XA
+t3FaoJoAsncM1Q9x5+3V0Ww68/eIFmb1zuUFljQJKprrX88XypNDvjYNby6vw/Pb0rwert/En
+mZ+AW4OZPnTPI89ZPmVMLuayrD2cE86Z/il8b+gw3r3+1nKatmIkjn2so1d01QraTlMqVSsbx
+NrRFi9wrf+M7Q== sanhpv@me.com
+```
+- [Add this key to Github account](https://help.github.com/articles/adding-a-new-ssh-key-to-your-github-account/)
 
 # Error
 
