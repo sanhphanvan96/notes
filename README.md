@@ -26,6 +26,14 @@
 - sudo apt-get install -f # Install dependencies
 
 ## [Install Maven](http://www.baeldung.com/install-maven-on-windows-linux-mac)
+
+## [Install lastest Sublime](http://docs.sublimetext.info/en/latest/getting_started/install.html)
+
+```
+cd ~
+wget http://c758482.r82.cf2.rackcdn.com/sublime-text_build-3083_amd64.deb
+```
+
 # Error
 
 ## 1. Cannot use apt-get 
