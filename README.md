@@ -117,6 +117,14 @@ NrRFi9wrf+M7Q== sanhpv@me.com
 ```
 - [Add this key to Github account](https://help.github.com/articles/adding-a-new-ssh-key-to-your-github-account/)
 
+## Install Atom
+```
+    curl -sL https://packagecloud.io/AtomEditor/atom/gpgkey | sudo apt-key add -
+    sudo sh -c 'echo "deb [arch=amd64] https://packagecloud.io/AtomEditor/atom/any/ any main" > /etc/apt/sources.list.d/atom.list'
+    sudo apt-get update
+    sudo apt-get install atom
+```
+
 # Error
 
 ## 1. Cannot use apt-get 
@@ -175,5 +183,60 @@ mysql> quit;
 [root ~]# service mysql start
 ```
 
+#Some helpful command
 
-
+1. Multiple firefox profile
+```
+./firefox -ProfileManager
+```
+2. services
+```
+sudo service --status-all | grep +
+sudo service mysql start
+sudo service mysql stop
+```
+3. docker
+```
+docker exec -it f525926e0172 bash
+docker inspect ce84c1397ff0 --format '{{ .Config.Env | json }}' | python -m json.tool
+docker images
+docker ps
+docker rmi name_of_image
+docker-compose pull
+docker-compose up
+docker-compose up --force-recreate
+docker-compose down
+```
+4. maven
+```
+mvn clean package
+mvn clean install
+mvn -Dmaven.test.skip=true install
+mvn -Dmaven.test.skip=true -Dspring.profiles.active=docker install
+```
+5. java
+```
+update-java-alternatives --set java-1.8.0-openjdk-amd64
+```
+6. systemctl
+```
+systemctl disable docker # disable boot service
+systemctl --user start pulseaudio
+systemctl --user status pulseaudio
+```
+7. sqlmap
+```
+sqlmap -r ~/BurpRequest/minglex -p id --dbms=MySql --dbs --proxy=http://127.0.0.1:8080 --flush-session
+```
+8. python
+```
+python -m SimpleHTTPServer 9696
+```
+9. netstat
+```
+netstat -anl | grep LIST | grep 3306
+```
+10. time
+```
+time ls -R
+```
