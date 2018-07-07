@@ -8,3 +8,6 @@
 - usermod -a -G sudo username
 
 - chsh -s /bin/bash username
+## [Oh My ZSH](https://github.com/robbyrussell/oh-my-zsh)
+
+- sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
