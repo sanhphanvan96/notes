@@ -1,29 +1,34 @@
 # Install for Kali
 ## [Adding a new user in Kali Linux](https://www.linkedin.com/pulse/20140502074357-79939846-adding-a-new-user-in-kali-linux)
 
-- useradd -m username
+```
+useradd -m username
 
-- passwd username
+passwd username
 
-- usermod -a -G sudo username
+usermod -a -G sudo username
 
-- chsh -s /bin/bash username
+chsh -s /bin/bash username
+```
 ## [Oh My ZSH](https://github.com/robbyrussell/oh-my-zsh)
 
-- sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+```sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"```
 
 ## [Install Docker](https://www.ptrace-security.com/2017/06/14/hackontuesday-episode-7-how-to-install-docker-on-kali-linux-2017-1/)
 
 ## [Install Docker Compose](https://docs.docker.com/compose/install/)
 
-- sudo curl -L https://github.com/docker/compose/releases/download/1.21.2/docker-compose-$(uname -s)-$(uname -m) -o /usr/local/bin/docker-compose
-
-- sudo chmod +x /usr/local/bin/docker-compose
+```
+sudo curl -L https://github.com/docker/compose/releases/download/1.21.2/docker-compose-$(uname -s)-$(uname -m) -o /usr/local/bin/docker-compose
+sudo chmod +x /usr/local/bin/docker-compose
+```
 
 ## [Install Visual Studio Code](https://code.visualstudio.com/docs/setup/linux#_installation)
 
-- sudo dpkg -i <file>.deb
-- sudo apt-get install -f # Install dependencies
+```
+sudo dpkg -i <file>.deb
+sudo apt-get install -f # Install dependencies
+```
 
 ## [Install Maven](http://www.baeldung.com/install-maven-on-windows-linux-mac)
 
@@ -121,24 +126,28 @@ E: Could not get lock /var/lib/dpkg/lock - open (11 Resource temporarily unavail
 
 E: Unable to lock the administration directory (/var/lib/dpkg/) is another process using it?
 ```
+```
+sudo rm /var/lib/apt/lists/lock
 
-- sudo rm /var/lib/apt/lists/lock
+sudo rm /var/cache/apt/archives/lock
 
-- sudo rm /var/cache/apt/archives/lock
-
-- sudo rm /var/lib/dpkg/lock
+sudo rm /var/lib/dpkg/lock
+```
 
 ## 2. [Get rid of Sudo](https://unix.stackexchange.com/a/26077)
 
-- sudo chown sanhpv /var/run/docker.sock
-
+```
+sudo chown sanhpv /var/run/docker.sock
+```
 ## 3. MySQL: Access denied for user 'root'@'localhost'
 
-- sudo service mysql stop
+```
+sudo service mysql stop
 
-- sudo mysqld_safe --skip-grant-tables &
+sudo mysqld_safe --skip-grant-tables &
 
-- mysql -u root
+mysql -u root
+```
 
 ``` mysql
 mysql> use mysql;
