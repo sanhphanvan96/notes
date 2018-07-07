@@ -14,6 +14,12 @@
 
 ## [Install Docker](https://www.ptrace-security.com/2017/06/14/hackontuesday-episode-7-how-to-install-docker-on-kali-linux-2017-1/)
 
+## [Install Docker Compose]()
+
+- sudo curl -L https://github.com/docker/compose/releases/download/1.21.2/docker-compose-$(uname -s)-$(uname -m) -o /usr/local/bin/docker-compose
+
+- sudo chmod +x /usr/local/bin/docker-compose
+
 
 # Error
 
