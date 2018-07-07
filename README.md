@@ -78,6 +78,29 @@ sudo apt-get install -y nodejs
      echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
      sudo apt-get update && sudo apt-get install yarn
 ```
+## Git on the Server - Generating Your SSH Public Key
+
+- Check to see if you have a key already by going to that directory and listing the contents
+```
+$ cd ~/.ssh
+$ ls
+authorized_keys2  id_dsa       known_hosts
+config            id_dsa.pub
+```
+- Generate SSH key
+```
+$ ssh-keygen
+Generating public/private rsa key pair.
+Enter file in which to save the key (/home/sanhpv/.ssh/id_rsa):
+Created directory '/home/sanhpv/.ssh'.
+Enter passphrase (empty for no passphrase):
+Enter same passphrase again:
+Your identification has been saved in /home/sanhpv/.ssh/id_rsa.
+Your public key has been saved in /home/sanhpv/.ssh/id_rsa.pub.
+The key fingerprint is:
+d0:82:24:8e:d7:f1:bb:9b:33:53:96:93:49:da:9b:e3 sanhpv@me.com
+```
+
 # Error
 
 ## 1. Cannot use apt-get 
