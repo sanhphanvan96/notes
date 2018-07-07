@@ -20,6 +20,11 @@
 
 - sudo chmod +x /usr/local/bin/docker-compose
 
+## [Install VsCode](https://code.visualstudio.com/docs/setup/linux#_installation)
+
+- sudo dpkg -i <file>.deb
+- sudo apt-get install -f # Install dependencies
+
 ## [Install Maven](http://www.baeldung.com/install-maven-on-windows-linux-mac)
 # Error
 
