@@ -12,8 +12,7 @@
 
 - sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
-## Install Docker
-
+## [Install Docker](https://www.ptrace-security.com/2017/06/14/hackontuesday-episode-7-how-to-install-docker-on-kali-linux-2017-1/)
 
 
 # Error
@@ -29,3 +28,7 @@ E: Unable to lock the administration directory (/var/lib/dpkg/) is another proce
 - sudo rm /var/cache/apt/archives/lock
 
 - sudo rm /var/lib/dpkg/lock
+
+## 2. [Get rid of Sudo](https://unix.stackexchange.com/a/26077)
+
+- sudo chown sanhpv /var/run/docker.sock
