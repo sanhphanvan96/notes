@@ -20,7 +20,7 @@
 
 - sudo chmod +x /usr/local/bin/docker-compose
 
-## [Install VsCode](https://code.visualstudio.com/docs/setup/linux#_installation)
+## [Install Visual Studio Code](https://code.visualstudio.com/docs/setup/linux#_installation)
 
 - sudo dpkg -i <file>.deb
 - sudo apt-get install -f # Install dependencies
@@ -48,6 +48,22 @@ A684C2DC 0B1583D4 19CBD290 217618CD
 DD9AF44B 99C49590 D2DBDEE1 75860FD2
 8C8BB2AD B2ECE5A4 EFC08AF2 25A9B864
 ------ END LICENSE ------
+```
+## Add application to dash (launch icon)
+```
+sudo vim /usr/share/applications/intellij.desktop
+```
+- Add these lines
+```
+[Desktop Entry]
+Version=13.0
+Type=Application
+Terminal=false
+Icon[en_US]=/home/rob/.intellij-13/bin/idea.png
+Name[en_US]=IntelliJ
+Exec=/home/rob/.intellij-13/bin/idea.sh
+Name=IntelliJ
+Icon=/home/rob/.intellij-13/bin/idea.png
 ```
 
 # Error
