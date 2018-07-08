@@ -1,7 +1,7 @@
 # Install for Kali
 ## [Adding a new user in Kali Linux](https://www.linkedin.com/pulse/20140502074357-79939846-adding-a-new-user-in-kali-linux)
 
-```
+```sh
 useradd -m username
 
 passwd username
@@ -18,14 +18,14 @@ chsh -s /bin/bash username
 
 ## [Install Docker Compose](https://docs.docker.com/compose/install/)
 
-```
+```sh
 sudo curl -L https://github.com/docker/compose/releases/download/1.21.2/docker-compose-$(uname -s)-$(uname -m) -o /usr/local/bin/docker-compose
 sudo chmod +x /usr/local/bin/docker-compose
 ```
 
 ## [Install Visual Studio Code](https://code.visualstudio.com/docs/setup/linux#_installation)
 
-```
+```sh
 sudo dpkg -i <file>.deb
 sudo apt-get install -f # Install dependencies
 ```
@@ -93,7 +93,7 @@ authorized_keys2  id_dsa       known_hosts
 config            id_dsa.pub
 ```
 - Generate SSH key
-```
+```sh
 $ ssh-keygen
 Generating public/private rsa key pair.
 Enter file in which to save the key (/home/sanhpv/.ssh/id_rsa):
@@ -118,11 +118,22 @@ NrRFi9wrf+M7Q== sanhpv@me.com
 - [Add this key to Github account](https://help.github.com/articles/adding-a-new-ssh-key-to-your-github-account/)
 
 ## Install Atom
-```
+```sh
     curl -sL https://packagecloud.io/AtomEditor/atom/gpgkey | sudo apt-key add -
     sudo sh -c 'echo "deb [arch=amd64] https://packagecloud.io/AtomEditor/atom/any/ any main" > /etc/apt/sources.list.d/atom.list'
     sudo apt-get update
     sudo apt-get install atom
+```
+## [Install ‘apt-fast’ to Speed Up apt-get/apt Package Downloads Using Multiple Mirrors](https://github.com/ilikenwf/apt-fast)
+
+- Firstly add the the PPA for apt-fast package as follows and then update your system.
+```
+sudo add-apt-repository ppa:apt-fast/stable
+sudo apt-get update
+```
+- Then
+```
+sudo apt-get -y install apt-fast
 ```
 
 # Error
@@ -134,7 +145,7 @@ E: Could not get lock /var/lib/dpkg/lock - open (11 Resource temporarily unavail
 
 E: Unable to lock the administration directory (/var/lib/dpkg/) is another process using it?
 ```
-```
+```sh
 sudo rm /var/lib/apt/lists/lock
 
 sudo rm /var/cache/apt/archives/lock
@@ -177,13 +188,13 @@ mysql> select host, user from user;
 1 row in set (0.00 sec)
 mysql> quit;
 ```
-```
+```sh
 [root ~]# kill -KILL [PID of mysqld_safe]
 [root ~]# kill -KILL [PID of mysqld]
 [root ~]# service mysql start
 ```
 
-#Some helpful command
+# Some helpful command
 
 1. Multiple firefox profile
 ```
@@ -196,7 +207,7 @@ sudo service mysql start
 sudo service mysql stop
 ```
 3. docker
-```
+```sh
 docker exec -it f525926e0172 bash
 docker inspect ce84c1397ff0 --format '{{ .Config.Env | json }}' | python -m json.tool
 docker images
@@ -206,6 +217,51 @@ docker-compose pull
 docker-compose up
 docker-compose up --force-recreate
 docker-compose down
+```
+- Dockerfile
+
+```dockerfile
+FROM maven:3.5-jdk-8
+
+# Build source -> java application
+COPY ./app /app
+WORKDIR /app
+RUN mvn -Dmaven.test.skip=true install
+
+# Install some python packages(Todo: need build another image that has these package first)
+WORKDIR /tmp
+RUN curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
+RUN python get-pip.py
+RUN apt update -y
+RUN apt install python-dev libpq-dev -y
+RUN apt-get install python-mysqldb -y
+
+# Python script for run later
+COPY ./wait-for-mysql.py /tmp/wait-for-mysql.py
+```
+```python
+import MySQLdb
+import time
+def try_to_connect():
+    print("Trying to connect aws-mysql.")
+    try:
+        connection = MySQLdb.connect(
+                host = 'aws-mysql',
+                user = 'sanhpv',
+                passwd = 'NYBpHxUmbGC9u3PMdPCR') #NUT YELP BESTBUY park HULU xbox USA music bestbuy GOLF COFFEE 9 usa 3 PARK MUSIC drip PARK COFFEE ROPE 
+        cursor = connection.cursor()
+        cursor.execute("USE aws-db")
+    except Exception, e:
+        print str(e)
+        time.sleep(5)
+        try_to_connect()
+
+try_to_connect()
+```
+- docker-compose.yml
+
+```yml
+command: bash -c "python /tmp/wait-for-mysql.py && echo 'aws-mysql works fine' && java -jar -Dspring.profiles.active=docker ./target/app.jar"
 ```
 4. maven
 ```
@@ -219,7 +275,7 @@ mvn -Dmaven.test.skip=true -Dspring.profiles.active=docker install
 update-java-alternatives --set java-1.8.0-openjdk-amd64
 ```
 6. systemctl
-```
+```sh
 systemctl disable docker # disable boot service
 systemctl --user start pulseaudio
 systemctl --user status pulseaudio
@@ -232,6 +288,38 @@ sqlmap -r ~/BurpRequest/minglex -p id --dbms=MySql --dbs --proxy=http://127.0.0.
 ```
 python -m SimpleHTTPServer 9696
 ```
+```python
+import code
+code.interact(local=dict(globals(), **locals()))
+```
+- with Ruby/Rails
+
+```
+gem install pry
+```
+```ruby
+require 'pry'
+
+puts 'requiring pry'
+binding.pry
+```
+```ruby
+From: /home/richard/Documents/eCommerceExample/spec/controllers/categories_controller_spec.rb @ line 21 :
+
+    16:     end
+    17:
+    18:     include_examples 'sets the proper global variables'
+    19:
+    20:     it "returns http success" do
+ => 21:       binding.pry
+    22:       expect(response).to have_http_status(:success)
+    23:     end
+    24:
+    25:     it 'returns a list of categories' do
+    26:       expect(assigns(:categories).size).to eq(1)
+
+[1] pry(#<RSpec::ExampleGroups::CategoriesController::GETShow>)>
+```
 9. netstat
 ```
 netstat -anl | grep LIST | grep 3306
@@ -240,3 +328,66 @@ netstat -anl | grep LIST | grep 3306
 ```
 time ls -R
 ```
+11. apt / apt-get
+- ran a dpkg command to install a couple of .deb packages (ex: ```sudo dpkg -i google-chrome-stable_current_amd64.deb```), but the install failed because some dependencies were missing.
+```sh
+apt-get -f install #-f, --fix-broken
+```
+- Most used commands:
+```
+  update - Retrieve new lists of packages
+  upgrade - Perform an upgrade
+  install - Install new packages (pkg is libc6 not libc6.deb)
+  remove - Remove packages
+  purge - Remove packages and config files
+  autoremove - Remove automatically all unused packages
+  dist-upgrade - Distribution upgrade, see apt-get(8)
+  dselect-upgrade - Follow dselect selections
+  build-dep - Configure build-dependencies for source packages
+  clean - Erase downloaded archive files
+  autoclean - Erase old downloaded archive files
+  check - Verify that there are no broken dependencies
+  source - Download source archives
+  download - Download the binary package into the current directory
+  changelog - Download and display the changelog for the given package
+```
+12. ngrok
+- To start a HTTP tunnel on port 80, run this next: 
+```
+./ngrok http 80
+```
+13. yarn and npm
+```sh
+npm install === yarn #Install is the default behavior.
+npm install taco --save === yarn add taco #The Taco package is saved to your package.jsonimmediately.
+npm uninstall taco --save === yarn remove taco #--savecan be defaulted in NPM by npm config set save true but this is non-obvious to most developers. Adding and removing from package.json is default in Yarn.
+npm install taco --save-dev === yarn add taco --dev
+npm update --save === yarn upgrade
+npm install taco@latest --save === yarn add taco
+npm install taco --global === yarn global add taco
+
+npm init === yarn init
+npm link === yarn link
+npm outdated === yarn outdated
+npm publish === yarn publish
+npm run === yarn run
+npm cache clean === yarn cache clean
+npm login === yarn login
+npm test === yarn test
+npm install --production === yarn --production
+
+```
+- [Things yarn has that NPM doesn’t](https://infinite.red/files/yarn.pdf)
+
+```yarn licenses ls``` — Allows you to inspect the licenses of your dependencies
+
+```yarn licenses generate-disclaimer``` — Automatically create your license dependency disclaimer
+
+```yarn why taco``` — Identify why ‘taco’ package is installed, detailing which other packages depend upon it (thanks Olivier Combe).
+
+```yarn upgrade-interactive``` — Allows you to selectively upgrade specific packages in a simple way
+
+14. [Rails simple cheat sheet](https://gist.github.com/mdang/95b4f54cadf12e7e0415)
+
+# END
+```code = developer + coffee;```
