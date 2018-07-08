@@ -217,6 +217,11 @@ docker-compose pull
 docker-compose up
 docker-compose up --force-recreate
 docker-compose down
+docker stop $(docker ps -q)    #stop all containers, forcefully: -f
+docker rm $(docker ps -a -q)   #remove all containers, forcefully: -f
+docker rmi $(docker images -q) #remove all docker images, forcefully: -f
+docker volume ls -qf dangling=true | xargs -r docker volume rm #remove all docker volumes
+docker rm (docker ps -a |grep redis |awk '{print $1}') #Remove all containers by image.ex: remove all redis containers:
 ```
 - Dockerfile
 
