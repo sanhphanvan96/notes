@@ -159,7 +159,7 @@ services:
     volumes:
       - ./db:/data/db
 ```
-- install MongoDB Compass:
+- [install MongoDB Compass](https://docs.mongodb.com/compass/master/install/):
 
 ```sh
 wget https://downloads.mongodb.com/compass/mongodb-compass_1.12.5_amd64.deb;
