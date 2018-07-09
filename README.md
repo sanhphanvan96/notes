@@ -135,7 +135,48 @@ sudo apt-get update
 ```
 sudo apt-get -y install apt-fast
 ```
+## Install Mongodb (docker)
 
+- Dockerfile
+
+```dockerfile
+FROM mongo
+VOLUME /data/db
+```
+
+- build mongo image: ```docker build -t mongodb-expose-27017 .```
+
+- docker-compose.yml
+
+```yml
+version: '3'
+services:
+  mongodb:
+    container_name: mongodb-expose-27017
+    image: mongo
+    ports:
+      - 27017:27017
+    volumes:
+      - ./db:/data/db
+```
+- install MongoDB Compass:
+
+```sh
+wget https://downloads.mongodb.com/compass/mongodb-compass_1.12.5_amd64.deb;
+sudo dpkg -i mongodb-compass_1.12.5_amd64.deb;
+DEBUG=* mongodb-compass;
+```
+- Test connect by NodeJs:
+
+```js
+const MongoClient = require('mongodb').MongoClient
+
+MongoClient.connect('mongodb://0.0.0.0:27017', (err, database) => {
+    if (err) return console.log(err)
+    db = database.db("db_name")
+    collection = db.collection("collection_name")
+})
+```
 # Error
 
 ## 1. Cannot use apt-get 
