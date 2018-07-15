@@ -234,6 +234,81 @@ mysql> quit;
 [root ~]# kill -KILL [PID of mysqld]
 [root ~]# service mysql start
 ```
+## 4. /var/log Disk Space Issues
+
+- Recently, I started noticing that my computer keeps running out of space for no reason at all. I
+mean I didn't download any large files and my root drive should not be having any space
+issues, and yet my computer kept tellling me that I had '0' bytes available or free on my /root/
+drive. As I found it hard to believe, I invoked the 'df' command (for disk space usage):
+```
+sanhpv@kali: df
+
+Filesystem     1K-blocks     Used Available Use% Mounted on
+udev             1951988        0   1951988   0% /dev
+tmpfs             394016    41468    352548  11% /run
+/dev/sda3       62799588 39764444    815384  97% /
+tmpfs            1970072   281384   1688688  15% /dev/shm
+tmpfs               5120        0      5120   0% /run/lock
+tmpfs            1970072        0   1970072   0% /sys/fs/cgroup
+/dev/sda1          98304    29425     68879  30% /boot/efi
+tmpfs             394012       12    394000   1% /run/user/130
+tmpfs             394012       52    393960   1% /run/user/1000
+
+sanhpv@kali: find / -size +2000M
+
+/var/log/kern.log
+/var/log/messages.1
+/var/log/messages
+/var/log/syslog
+/var/log/kern.log.1
+```
+- Clearly, the folder '/var/log' needs my attention. Seems like some kernel log files are
+humongous in size and have not been 'rotated' (explained later). So, I listed the contents of
+this directory arranged in order of decreasing size:
+
+```
+sanhpv@kali: cd /var/log
+sanhpv@kali: ls -s -S
+
+total 34891876
+15180996 kern.log.1       107372 syslog.6.gz          40 auth.log                4 exim4                     4 stunnel4
+ 4658020 messages.1        93308 syslog.5.gz          40 user.log                4 gdm3                      4 sysstat
+ 4241176 syslog            58468 messages.2.gz        36 daemon.log.2.gz         4 glusterfs                 4 unattended-upgrades
+ 4222736 kern.log          25388 debug.2.gz            4 faillog                 4 inetsim                   4 alternatives.log
+ 1921736 debug.1            5356 user.log.1           32 wtmp                    4 installer                 4 macchanger.log.1.gz
+ 1762268 syslog.1            896 daemon.log.1         16 daemon.log              4 mysql                     4 macchanger.log.2.gz
+ 1285180 messages              4 lastlog               8 auth.log.2.gz           4 nginx                     0 bootstrap.log
+  517736 debug               236 auth.log.1            4 apache2                 4 ntpstats                  0 btmp
+  323240 syslog.4.gz         140 user.log.2.gz         4 apt                     4 openvpn                   0 fontconfig.log
+  200320 kern.log.2.gz        84 dpkg.log              4 chkrootkit              4 postgresql
+  162340 syslog.2.gz           4 tallylog              4 couchdb                 4 samba
+  124556 syslog.3.gz          48 Xorg.1.log            4 dradis                  4 speech-dispatcher
+
+sanhpv@kali: sudo /etc/cron.daily/logrotate
+```
+- It ran for a while as it rotated the logs. logrotate is meant to automate the task of
+administrating log files on systems that generate a heavy amount of logs. It is responsible for
+compressing, rotating, and delivering log files. Read more about it [here](https://linux.die.net/man/8/logrotate).
+
+- What I hoped by running logrotate was that it would rotate and compress the old log files so I
+can quickly remove those from my system. Why didn't I just delete that '/var/log' directory
+directly? Because that would break things. '/var/log' is needed by the system and the system
+expects to see it. Deleting it is a bad idea. So, I needed to ensure that I don't delete anything
+of significance.
+After a while, logrotate completed execution and I was able to see some '.gz' compresses files
+in this directory. I quickly removed (or deleted) these.
+
+- Since these had already been rotated, I figured it would be safe to remove these as well. But instead of doing
+an 'rm' to remove them, I decided to just empty them (in case they were being used
+somewhere)
+
+```
+sanhpv@kali: sudo su
+sanhpv@kali: >kern.log.1
+sanhpv@kali: >messages.1
+sanhpv@kali: >syslog
+sanhpv@kali: >kern.log
+```
 
 # Some helpful command
 
