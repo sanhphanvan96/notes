@@ -177,6 +177,18 @@ MongoClient.connect('mongodb://0.0.0.0:27017', (err, database) => {
     collection = db.collection("collection_name")
 })
 ```
+
+## Install Ibus Unikey
+
+```sh
+sudo apt-get install ibus-unikey
+```
+- Logout and login again to make new plugin works.
+
+- Go to ```Settings``` -> ```Region & Language```, add ```Vietnamese(Unikey)```.
+
+- To switch input type press ```Supper``` + ```Space```
+
 # Error
 
 ## 1. Cannot use apt-get 
