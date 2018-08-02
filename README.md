@@ -396,6 +396,15 @@ try_to_connect()
 ```yml
 command: bash -c "python /tmp/wait-for-mysql.py && echo 'aws-mysql works fine' && java -jar -Dspring.profiles.active=docker ./target/app.jar"
 ```
+
+- Pushing the docker image to docker hub repository:
+
+```
+docker login
+docker build -t sanhphanvan/awesome .
+docker push sanhphanvan/awesome
+```
+
 4. maven
 ```
 mvn clean package
