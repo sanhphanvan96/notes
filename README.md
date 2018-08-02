@@ -522,5 +522,15 @@ npm install --production === yarn --production
 
 14. [Rails simple cheat sheet](https://gist.github.com/mdang/95b4f54cadf12e7e0415)
 
+15. Git
+
+- Squash and Merge: Takes all the commits from the ```bugfix``` branch and merges it with your current branch (ex: ```master```).
+
+```
+git checkout master
+git merge --squash bugfix
+git commit
+```
+
 # END
 ```code = developer + coffee;```
