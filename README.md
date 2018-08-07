@@ -540,6 +540,11 @@ git checkout master
 git merge --squash bugfix
 git commit
 ```
+- git aliases:
 
+```
+git config --global alias.co checkout
+git config --global alias.br branch
+```
 # END
 ```code = developer + coffee;```
