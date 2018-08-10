@@ -322,7 +322,7 @@ sanhpv@kali: >syslog
 sanhpv@kali: >kern.log
 ```
 
-# Some helpful command
+# Some helpful commands
 
 1. Multiple firefox profile
 ```
