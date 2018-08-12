@@ -13,6 +13,10 @@ chsh -s /bin/bash username
 ## [Oh My ZSH](https://github.com/robbyrussell/oh-my-zsh)
 
 ```sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"```
+```sh
+cat ~/.zshrc
+ZSH_THEME="gnzh"
+```
 
 ## [Install Docker](https://www.ptrace-security.com/2017/06/14/hackontuesday-episode-7-how-to-install-docker-on-kali-linux-2017-1/)
 

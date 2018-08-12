@@ -84,5 +84,32 @@ brew install asciinema
 asciinema rec
 ```
 - This spawns a new shell instance and records all terminal output. When you're ready to finish simply exit the shell either by typing ```exit``` or hitting ```Ctrl-D```.
+
+8. Launch application from terminal: edit ```.zshrc``` and add these lines at the end
+
+```zsh
+# export for mysql
+export PATH="/usr/local/mysql/bin:$PATH"
+
+# export for maven
+export M2_HOME=/Applications/apache-maven-3.5.4
+export PATH=$PATH:$M2_HOME/bin
+
+# for vscode
+function code {
+    if [[ $# = 0 ]]
+    then
+        open -a "Visual Studio Code"
+    else
+        local argPath="$1"
+        [[ $1 = /* ]] && argPath="$1" || argPath="$PWD/${1#./}"
+        open -a "Visual Studio Code" "$argPath"
+    fi
+}
+# for sublime
+alias subl="/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl"
+```
+
 ## Userful key shortcuts
 
+1. Show hidden files in Finder ```shift + command + .```
