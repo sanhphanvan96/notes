@@ -110,6 +110,9 @@ function code {
 alias subl="/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl"
 ```
 
+9. [Installing multiple versions of Python](https://github.com/pyenv/pyenv)
+
+
 ## Userful key shortcuts
 
 1. Show hidden files in Finder ```shift + command + .```

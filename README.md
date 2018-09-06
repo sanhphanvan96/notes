@@ -14,7 +14,10 @@ chsh -s /bin/bash username
 
 ```sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"```
 ```sh
-cat ~/.zshrc
+nano ~/.zshrc
+```
+and change
+```
 ZSH_THEME="gnzh"
 ```
 
