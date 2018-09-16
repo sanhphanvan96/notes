@@ -112,6 +112,12 @@ alias subl="/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl"
 
 9. [Installing multiple versions of Python](https://github.com/pyenv/pyenv)
 
+10. Run, stop Docker from terminal
+
+```sh
+alias docker-service="open -a /Applications/Docker.app --hide"
+alias docker-stop="ps -ax | grep "/Applications/Docker.app/Contents/MacOS/Docker" | head -1 | awk {'print $1'} | xargs kill -9"
+```
 
 ## Userful key shortcuts
 
