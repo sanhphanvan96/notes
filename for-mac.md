@@ -119,6 +119,6 @@ alias docker-service="open -a /Applications/Docker.app --hide"
 alias docker-stop="ps -ax | grep "/Applications/Docker.app/Contents/MacOS/Docker" | head -1 | awk {'print $1'} | xargs kill -9"
 ```
 
-## Userful key shortcuts
+## Useful key shortcuts
 
 1. Show hidden files in Finder ```shift + command + .```
