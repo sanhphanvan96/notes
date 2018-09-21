@@ -348,10 +348,13 @@ docker inspect ce84c1397ff0 --format '{{ .Config.Env | json }}' | python -m json
 docker images
 docker ps
 docker rmi name_of_image
+docker rm $(docker ps -aq)
+docker logs -tf name_of_container
 docker-compose pull
 docker-compose up
 docker-compose up --force-recreate
 docker-compose down
+docker-compose -f docker-compose.debug.yml up --build
 docker stop $(docker ps -q)    #stop all containers, forcefully: -f
 docker rm $(docker ps -a -q)   #remove all containers, forcefully: -f
 docker rmi $(docker images -q) #remove all docker images, forcefully: -f
@@ -435,11 +438,29 @@ docker push sanhphanvan/awesome
 
 4. maven
 ```
+mvn spring-boot:run
 mvn clean package
 mvn clean install
+mvn verify
 mvn -Dmaven.test.skip=true install
 mvn -Dmaven.test.skip=true -Dspring.profiles.active=docker install
 ```
+
+
+```validate``` - validate the project is correct and all necessary information is available
+
+```compile``` - compile the source code of the project
+
+```test``` - test the compiled source code using a suitable unit testing framework. These tests should not require the code be packaged or deployed
+
+```package``` - take the compiled code and package it in its distributable format, such as a JAR.
+
+```verify``` - run any checks on results of integration tests to ensure quality criteria are met
+
+```install``` - install the package into the local repository, for use as a dependency in other projects locally
+
+```deploy``` - done in the build environment, copies the final package to the remote repository for sharing with other developers and projects
+
 5. java
 ```
 update-java-alternatives --set java-1.8.0-openjdk-amd64
