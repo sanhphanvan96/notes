@@ -111,6 +111,7 @@ alias subl="/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl"
 ```
 
 9. [Installing multiple versions of Python](https://github.com/pyenv/pyenv)
+- tutorial [https://weknowinc.com/blog/running-multiple-python-versions-mac-osx](https://weknowinc.com/blog/running-multiple-python-versions-mac-osx)
 
 10. Run, stop Docker from terminal
 
