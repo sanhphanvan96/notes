@@ -108,6 +108,12 @@ function code {
 }
 # for sublime
 alias subl="/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl"
+
+# for ngrok
+alias ngrok="/Users/sanh/Downloads/ngrok/ngrok"
+
+# for pyenv
+eval "$(pyenv init -)"
 ```
 
 9. [Installing multiple versions of Python](https://github.com/pyenv/pyenv)

@@ -214,9 +214,12 @@ sudo rm /var/lib/dpkg/lock
 ```
 
 ## 2. [Get rid of Sudo](https://unix.stackexchange.com/a/26077)
-
+- docker
+```sh
+sudo usermod -aG docker $USER # recommended, specially for docker
 ```
-sudo chown sanhpv /var/run/docker.sock
+```sh
+sudo chown sanhpv /var/run/docker.sock # shouldn't do this
 ```
 ## 3. MySQL: Access denied for user 'root'@'localhost'
 
@@ -476,12 +479,34 @@ systemctl --user status pulseaudio
 sqlmap -r ~/BurpRequest/minglex -p id --dbms=MySql --dbs --proxy=http://127.0.0.1:8080 --flush-session
 ```
 8. python
+- The SimpleHTTPServer module that comes with Python is a simple HTTP server that
+provides standard GET and HEAD request handlers
 ```
 python -m SimpleHTTPServer 9696
 ```
+- or Ruby (recommended): Run [WEBrick](https://apidock.com/ruby/WEBrick) HTTP server
+```
+ruby -run -ehttpd . -9696
+```
+
+---
+
+- Rather than step through code with a debugger, you can add the code module to your Python program to instruct the program to stop execution and enter into the interactive mode in order to examine how your code is working. The code module is part of the Python standard library.
+
+    - This is useful because you are able to leverage an interpreter without sacrificing the complexity and permanence that programming files can provide. Through using the code module you can avoid using print() statements throughout your code as a form of debugging, which can become unwieldy over time.
+
+    - To make use of the module as a method for debugging, you can use the interact() function of the module, which stops execution of the program at the point at which it is called, and provides you with an interactive console so that you can examine the current state of your program.
 ```python
 import code
+```
+- insert this line to wherever you wanna create an object instance of the InteractiveConsole class, which emulates the behavior of the interactive Python interpreter 
+```python
 code.interact(local=dict(globals(), **locals()))
+```
+- Enable colored terminal output for Python’s logging module [coloredlogs](https://pypi.org/project/coloredlogs/)
+```python
+import coloredlogs, logging
+coloredlogs.install() #coloredlogs.install(level='DEBUG')
 ```
 - with Ruby/Rails
 
