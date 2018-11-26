@@ -129,3 +129,15 @@ alias docker-stop="ps -ax | grep "/Applications/Docker.app/Contents/MacOS/Docker
 ## Useful key shortcuts
 
 1. Show hidden files in Finder ```shift + command + .```
+
+
+## Error
+
+1. rails:
+
+- bundle install error: sqlite3
+
+```sh
+bundle config build.sqlite3 --with-sqlite3-include=$HOME/include --with-sqlite3-lib=$HOME/lib --with-sqlite3-dir=$HOME/bin
+bundle install
+```
