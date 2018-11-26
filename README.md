@@ -404,6 +404,26 @@ def try_to_connect():
 
 try_to_connect()
 ```
+
+- [Using multi-stage builds](https://docs.docker.com/develop/develop-images/multistage-build/) feature in Dockerfiles enables you to create smaller container images with better caching and smaller security footprint. When a docker image is built, each step is actually a container that is launched and saved, these are intermediate images. When you rebuild an image, docker will check if the files you use for its build have changed. If so, it will start again from the step that has been modified. To take advantage of the cache, we will pre-register the dependencies.
+
+```Dockerfile
+FROM maven:3.5.3-jdk-8 as maven
+RUN mkdir --parents /usr/src/app
+WORKDIR /usr/src/app
+
+ADD pom.xml /usr/src/app/
+RUN mvn verify clean --fail-never
+
+ADD . /usr/src/app
+RUN mvn install
+
+
+FROM java:8
+COPY --from=maven /usr/src/app/target/XVulB-*.war /opt/app.war
+CMD ["java","-jar","-Dspring.profiles.active=docker","/opt/app.war"]
+```
+
 - docker-compose.yml
 
 ```yml
