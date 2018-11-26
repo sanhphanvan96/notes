@@ -114,6 +114,10 @@ alias ngrok="/Users/sanh/Downloads/ngrok/ngrok"
 
 # for pyenv
 eval "$(pyenv init -)"
+
+# for rbenv
+# eval "$(rbenv init -)"
+export PATH="$HOME/.rbenv/shims:$PATH"
 ```
 
 9. [Installing multiple versions of Python](https://github.com/pyenv/pyenv)

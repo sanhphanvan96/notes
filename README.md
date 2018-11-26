@@ -356,6 +356,7 @@ docker logs -tf name_of_container
 docker-compose pull
 docker-compose up
 docker-compose up --force-recreate
+docker-compose up name_of_service #start a particular service defined in docker-compose file
 docker-compose down
 docker-compose -f docker-compose.debug.yml up --build
 docker stop $(docker ps -q)    #stop all containers, forcefully: -f
@@ -556,6 +557,18 @@ From: /home/richard/Documents/eCommerceExample/spec/controllers/categories_contr
 
 [1] pry(#<RSpec::ExampleGroups::CategoriesController::GETShow>)>
 ```
+
+- Pyenv: Install Multiple Python Versions for Specific Project
+    - Pyenv is a simple, powerful and cross-platform tool for managing multiple Python versions on Linux systems, that used for.
+        - Switching the global Python version on a per-user basis.
+        - Setting the local Python version on per-project basis.
+        - Managing of virtual environments created by anaconda or virtualenv.
+        - Overriding the Python version with an environment variable.
+        - Searching commands from multiple versions of Python and more.
+    - Github repo: [https://github.com/pyenv/pyenv](https://github.com/pyenv/pyenv)
+    - Tutorial [https://www.tecmint.com/pyenv-install-and-manage-multiple-python-versions-in-linux/](https://www.tecmint.com/pyenv-install-and-manage-multiple-python-versions-in-linux/)
+    - For Ruby: rbenv [https://github.com/rbenv/rbenv](https://github.com/rbenv/rbenv)
+
 9. netstat
 ```
 netstat -anl | grep LIST | grep 3306
