@@ -196,6 +196,11 @@ sudo apt-get install ibus-unikey
 
 - To switch input type press ```Supper``` + ```Space```
 
+## Install aria2: lightweight multi-protocol, multi-connection command-line, cross platform utility
+- Features: [https://github.com/aria2/aria2#features](https://github.com/aria2/aria2#features)
+- Options: [https://aria2.github.io/manual/en/html/aria2c.html#options](https://aria2.github.io/manual/en/html/aria2c.html#options)
+- Sample command: ```aria2c -x 16 -s 16 --file-allocation=none -d ./```
+
 # Error
 
 ## 1. Cannot use apt-get 
