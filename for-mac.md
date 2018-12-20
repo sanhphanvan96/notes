@@ -145,3 +145,17 @@ alias docker-stop="ps -ax | grep "/Applications/Docker.app/Contents/MacOS/Docker
 bundle config build.sqlite3 --with-sqlite3-include=$HOME/include --with-sqlite3-lib=$HOME/lib --with-sqlite3-dir=$HOME/bin
 bundle install
 ```
+- bundle install error: mysql2
+```
+Errno::EPERM: Operation not permitted @ apply2files -
+/Users/me/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/mysql2-0.4.9/CHANGELOG.md
+An error occurred while installing mysql2 (0.4.9), and Bundler cannot continue.
+Make sure that `gem install mysql2 -v '0.4.9' --source 'https://rubygems.org/'` succeeds before bundling.
+
+In Gemfile:
+  mysql2
+```
+
+```
+sudo gem install mysql2 -v '0.4.9' -- --srcdir=/usr/local/mysql/include
+```

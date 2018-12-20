@@ -658,5 +658,54 @@ git commit
 git config --global alias.co checkout
 git config --global alias.br branch
 ```
+16. mysql
+
+- [Create new user and grant permissions](https://www.digitalocean.com/community/tutorials/how-to-create-a-new-user-and-grant-permissions-in-mysql):
+```SQL
+CREATE USER 'dev'@'localhost' IDENTIFIED BY 'password';
+GRANT INSERT,SELECT ON db.table TO 'dev'@'localhost';
+FLUSH PRIVILEGES;
+```
+```SQL
+SHOW GRANTS;
+SHOW GRANTS FOR 'dev'@'localhost';
+SHOW GRANTS FOR CURRENT_USER();
+```
+
+17. stat: display file status
+- The stat utility displays information about the file pointed to by file.
+    - Read, write or execute permissions of the named file are not required, but all directories listed in the path name leading to the file must be searchable.  If no argument is given, stat displays information about the file descriptor for standard input. (quoted in ```man stat```)
+    ```bash
+    stat ./
+    stat *.*
+    ```
+18. openssl
+
+```bash
+openssl passwd -1 plain_password # => md5
+openssl prime 123456781
+```
+
+9999. Some combine commands:
+```bash
+history | grep docker | awk '{print $1="", $0 }' | sort | uniq
+```
+
+```bash
+ls -la | awk -v OFS=' ' '{print $5, $1}'
+ls -la | awk -v OFS='\t' '{print $5, $1}'
+```
+
+```
+netstat -nv | grep -E "\b([0-9]{1,3}\.){3}[0-9]{1,3}\b" | awk '{print $9}' | head -n 1
+```
+
+```bash
+for i in `vagrant global-status | grep virtualbox | awk '{ print $1 }'` ; do echo $i ; done
+```
+
+```bash
+echo -e "\e[1;40m" ; clear ; while :; do echo $LINES $COLUMNS $(( $RANDOM % $COLUMNS)) $(( $RANDOM % 72 )) ;sleep 0.05; done|awk '{ letters="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%^&*()"; c=$4; letter=substr(letters,c,1);a[$3]=0;for (x in a) {o=a[x];a[x]=a[x]+1; printf "\033[%s;%sH\033[2;32m%s",o,x,letter; printf "\033[%s;%sH\033[1;37m%s\033[0;0H",a[x],x,letter;if (a[x] >= $1) { a[x]=0; } }}'
+```
 # END
 ```code = developer + coffee;```
