@@ -51,7 +51,7 @@ Download file ```config.terminator``` in ```configs``` folder into your machine 
 ```bash
 sudo bash -c "cat config.terminator > ~/.config/terminator/config"
 ```
-
+![img](images/terminator.png)
 ## Enable 'minimize on click' on Ubuntu dock
 
 Open Terminal and run
@@ -72,7 +72,7 @@ Install [```http://www.muflone.com/gnome-appfolders-manager/english/install.html
 
 ![img](images/gnome-appfolders-manager.png)
 
-## Gnome tweak too
+## Gnome tweak tool
 ```bash
 sudo apt install gnome-tweak-tool
 ```
