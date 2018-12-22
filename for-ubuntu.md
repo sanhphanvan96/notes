@@ -9,7 +9,64 @@ sudo wget https://raw.githubusercontent.com/fcitx/fcitx-unikey/ccffd3b77b78312f1
 
 => logout => Fcitx > Configure > untick "Only Show Current Language" > add Unikey
 ```
+## [Elementary OS's Pantheon File manager](https://github.com/elementary/files)
+DEMO: 
+- [https://www.youtube.com/watch?v=aQw4_7Ue8wc](https://www.youtube.com/watch?v=aQw4_7Ue8wc)
 
+
+![img](https://i.stack.imgur.com/Fv1PB.png)
+
+    ```
+    sudo add-apt-repository ppa:elementary-os/stable
+    sudo apt-get update
+    sudo apt-get install pantheon-files
+    ```
+- Configure Pantheon-files to use double click
+
+    ```
+    gsettings set io.elementary.files.preferences single-click false
+    ```
+    or
+    ```
+    gsettings set org.pantheon.files.preferences single-click false
+    ```
+## Change An Application Icon in Ubuntu Unity
+
+```
+cd /usr/share/applications
+sudo nano firefox.desktop
+```
+
+- Set ```Icon=/path/of/your/icon```
+
+## Install Terminator
+
+```bash
+sudo add-apt-repository ppa:gnome-terminator
+sudo apt-get update
+sudo apt-get install terminator
+```
+
+- Download file ```config.terminator``` in ```configs``` folder into your machine and change your default configuration by: 
+
+```bash
+sudo bash -c "cat config.terminator > ~/.config/terminator/config"
+```
+
+## Enable 'minimize on click' on Ubuntu dock
+
+Open Terminal and run
+```
+gsettings set org.gnome.shell.extensions.dash-to-dock click-action 'minimize'
+```
+To revert to the default option, simply run 
+```
+gsettings reset org.gnome.shell.extensions.dash-to-dock click-action
+```
+Also, run the following to see all possible permitted values 
+```
+gsettings range org.gnome.shell.extensions.dash-to-dock click-action
+```
 # Error
 
 ## [No sound Ubuntu](https://help.ubuntu.com/community/SoundTroubleshootingProcedure)
