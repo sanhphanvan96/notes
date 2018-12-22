@@ -76,6 +76,24 @@ Install [```http://www.muflone.com/gnome-appfolders-manager/english/install.html
 ```bash
 sudo apt install gnome-tweak-tool
 ```
+
+## Background for Grub (1920x1200)
+```bash
+sudo cp ./images/grub-background.jpg /boot/grub/
+sudo update-grub
+```
+```
+Generating grub configuration file ...
+Found background image: grub-background.jpg
+Found linux image: /boot/vmlinuz-x.x.x-43-generic
+Found initrd image: /boot/initrd.img-x.x.0-43-generic
+Found linux image: /boot/vmlinuz-x.x.x-42-generic
+Found initrd image: /boot/initrd.img-x.x.0-42-generic
+Found Windows Boot Manager on /dev/sda1@/EFI/Microsoft/Boot/bootmgfw.efi
+Adding boot menu entry for EFI firmware configuration
+done
+```
+
 # Errors
 
 ## [No sound Ubuntu](https://help.ubuntu.com/community/SoundTroubleshootingProcedure)
