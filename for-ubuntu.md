@@ -1,4 +1,4 @@
-# Install for Ubuntu
+# For Ubuntu
 
 ## [Fcitx-Unikey](https://www.sitecuatui.com/fcitx-unikey/)
 
@@ -38,7 +38,7 @@ sudo nano firefox.desktop
 
 Set ```Icon=/path/of/your/icon```
 
-## Install Terminator
+## Terminator
 
 ```bash
 sudo add-apt-repository ppa:gnome-terminator
@@ -69,7 +69,14 @@ gsettings range org.gnome.shell.extensions.dash-to-dock click-action
 
 ## Reorder your launch application [gnome-appfolders-manager](http://www.muflone.com/jekyll/gnome-appfolders-manager/english/)
 Install [```http://www.muflone.com/gnome-appfolders-manager/english/install.html```](http://www.muflone.com/gnome-appfolders-manager/english/install.html)
-# Error
+
+![img](images/gnome-appfolders-manager.png)
+
+## Gnome tweak too
+```bash
+sudo apt install gnome-tweak-tool
+```
+# Errors
 
 ## [No sound Ubuntu](https://help.ubuntu.com/community/SoundTroubleshootingProcedure)
 
