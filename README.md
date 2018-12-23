@@ -14,12 +14,31 @@
   - [Install Mongodb (docker)](#install-mongodb-docker)
   - [Install Ibus Unikey](#install-ibus-unikey)
   - [Install aria2: lightweight multi-protocol, multi-connection command-line, cross platform utility](#install-aria2-lightweight-multi-protocol-multi-connection-command-line-cross-platform-utility)
-- [Error](#error)
+- [Errors](#errors)
   - [1. Cannot use apt-get](#1-cannot-use-apt-get)
   - [2. Get rid of Sudo](#2-get-rid-of-sudo)
   - [3. MySQL: Access denied for user 'root'@'localhost'](#3-mysql-access-denied-for-user-rootlocalhost)
   - [4. /var/log Disk Space Issues](#4-varlog-disk-space-issues)
 - [Some helpful commands](#some-helpful-commands)
+  - [1. Multiple firefox profile](#1-multiple-firefox-profile)
+  - [2. services](#2-services)
+  - [3. docker](#3-docker)
+  - [4. maven](#4-maven)
+  - [5. java](#5-java)
+  - [6. systemctl](#6-systemctl)
+  - [7. sqlmap](#7-sqlmap)
+  - [8. python](#8-python)
+  - [9. netstat](#9-netstat)
+  - [10. time](#10-time)
+  - [11. apt / apt-get](#11-apt--apt-get)
+  - [12. ngrok](#12-ngrok)
+  - [13. yarn and npm](#13-yarn-and-npm)
+  - [14. Rails simple cheat sheet](#14-rails-simple-cheat-sheet)
+  - [15. Git](#15-git)
+  - [16. mysql](#16-mysql)
+  - [17. stat: display file status](#17-stat-display-file-status)
+  - [18. openssl](#18-openssl)
+  - [9999. Some combine commands](#9999-some-combine-commands)
 - [END](#end)
 # Install for Kali
 ## [Adding a new user in Kali Linux](https://www.linkedin.com/pulse/20140502074357-79939846-adding-a-new-user-in-kali-linux)
@@ -224,7 +243,7 @@ sudo apt-get install ibus-unikey
 - Options: [https://aria2.github.io/manual/en/html/aria2c.html#options](https://aria2.github.io/manual/en/html/aria2c.html#options)
 - Sample command: ```aria2c -x 16 -s 16 --file-allocation=none -d ./```
 
-# Error
+# Errors
 
 ## 1. Cannot use apt-get 
 
@@ -362,17 +381,17 @@ sanhpv@kali: >kern.log
 
 # Some helpful commands
 
-1. Multiple firefox profile
+## 1. Multiple firefox profile
 ```
 ./firefox -ProfileManager
 ```
-2. services
+## 2. services
 ```
 sudo service --status-all | grep +
 sudo service mysql start
 sudo service mysql stop
 ```
-3. docker
+## 3. docker
 ```sh
 docker exec -it f525926e0172 bash
 docker inspect ce84c1397ff0 --format '{{ .Config.Env | json }}' | python -m json.tool
@@ -488,7 +507,7 @@ docker build -t sanhphanvan/awesome .
 docker push sanhphanvan/awesome
 ```
 
-4. maven
+## 4. maven
 ```
 mvn spring-boot:run
 mvn clean package
@@ -513,21 +532,21 @@ mvn -Dmaven.test.skip=true -Dspring.profiles.active=docker install
 
 ```deploy``` - done in the build environment, copies the final package to the remote repository for sharing with other developers and projects
 
-5. java
+## 5. java
 ```
 update-java-alternatives --set java-1.8.0-openjdk-amd64
 ```
-6. systemctl
+## 6. systemctl
 ```sh
 systemctl disable docker # disable boot service
 systemctl --user start pulseaudio
 systemctl --user status pulseaudio
 ```
-7. sqlmap
+## 7. sqlmap
 ```
 sqlmap -r ~/BurpRequest/minglex -p id --dbms=MySql --dbs --proxy=http://127.0.0.1:8080 --flush-session
 ```
-8. python
+## 8. python
 - The SimpleHTTPServer module that comes with Python is a simple HTTP server that
 provides standard GET and HEAD request handlers
 ```
@@ -597,15 +616,15 @@ From: /home/richard/Documents/eCommerceExample/spec/controllers/categories_contr
     - Tutorial [https://www.tecmint.com/pyenv-install-and-manage-multiple-python-versions-in-linux/](https://www.tecmint.com/pyenv-install-and-manage-multiple-python-versions-in-linux/)
     - For Ruby: rbenv [https://github.com/rbenv/rbenv](https://github.com/rbenv/rbenv)
 
-9. netstat
+## 9. netstat
 ```
 netstat -anl | grep LIST | grep 3306
 ```
-10. time
+## 10. time
 ```
 time ls -R
 ```
-11. apt / apt-get
+## 11. apt / apt-get
 - ran a dpkg command to install a couple of .deb packages (ex: ```sudo dpkg -i google-chrome-stable_current_amd64.deb```), but the install failed because some dependencies were missing.
 ```sh
 apt-get -f install #-f, --fix-broken
@@ -628,12 +647,12 @@ apt-get -f install #-f, --fix-broken
   download - Download the binary package into the current directory
   changelog - Download and display the changelog for the given package
 ```
-12. ngrok
+## 12. ngrok
 - To start a HTTP tunnel on port 80, run this next: 
 ```
 ./ngrok http 80
 ```
-13. yarn and npm
+## 13. yarn and npm
 ```sh
 npm install === yarn #Install is the default behavior.
 npm install taco --save === yarn add taco #The Taco package is saved to your package.jsonimmediately.
@@ -664,9 +683,9 @@ npm install --production === yarn --production
 
 ```yarn upgrade-interactive``` — Allows you to selectively upgrade specific packages in a simple way
 
-14. [Rails simple cheat sheet](https://gist.github.com/mdang/95b4f54cadf12e7e0415)
+## 14. [Rails simple cheat sheet](https://gist.github.com/mdang/95b4f54cadf12e7e0415)
 
-15. Git
+## 15. Git
 
 - Squash and Merge: Takes all the commits from the ```bugfix``` branch and merges it with your current branch (ex: ```master```).
 
@@ -681,7 +700,7 @@ git commit
 git config --global alias.co checkout
 git config --global alias.br branch
 ```
-16. mysql
+## 16. mysql
 
 - [Create new user and grant permissions](https://www.digitalocean.com/community/tutorials/how-to-create-a-new-user-and-grant-permissions-in-mysql):
 ```SQL
@@ -695,21 +714,21 @@ SHOW GRANTS FOR 'dev'@'localhost';
 SHOW GRANTS FOR CURRENT_USER();
 ```
 
-17. stat: display file status
+## 17. stat: display file status
 - The stat utility displays information about the file pointed to by file.
     - Read, write or execute permissions of the named file are not required, but all directories listed in the path name leading to the file must be searchable.  If no argument is given, stat displays information about the file descriptor for standard input. (quoted in ```man stat```)
     ```bash
     stat ./
     stat *.*
     ```
-18. openssl
+## 18. openssl
 
 ```bash
 openssl passwd -1 plain_password # => md5
 openssl prime 123456781
 ```
 
-9999. Some combine commands:
+## 9999. Some combine commands
 ```bash
 history | grep docker | awk '{print $1="", $0 }' | sort | uniq
 ```
