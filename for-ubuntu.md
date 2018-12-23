@@ -2,7 +2,7 @@
 
 ## [Fcitx-Unikey](https://www.sitecuatui.com/fcitx-unikey/)
 
-```
+```bash
 sudo apt-get install fcitx-unikey
 im-config -n fcitx
 sudo wget https://raw.githubusercontent.com/fcitx/fcitx-unikey/ccffd3b77b78312f135f3958c9a4db7e98562e11/src/fcitx-unikey.desc -O /usr/share/fcitx/configdesc/fcitx-unikey.desc
@@ -15,24 +15,25 @@ DEMO:
 
 ![img](https://i.stack.imgur.com/Fv1PB.png)
 
-```
+```bash
 sudo add-apt-repository ppa:elementary-os/stable
 sudo apt-get update
 sudo apt-get install pantheon-files
 ```
 Configure Pantheon-files to use double click
 
-```
+```bash
 gsettings set io.elementary.files.preferences single-click false
 ```
 or
-```
+
+```bash
 gsettings set org.pantheon.files.preferences single-click false
 ```
 ## Change An Application Icon in Ubuntu Unity
 
-```
-cd /usr/share/applications
+```bash
+cd /usr/share/applications # or cd ~/.local/share/applications
 sudo nano firefox.desktop
 ```
 
@@ -52,18 +53,19 @@ Download file ```config.terminator``` in ```configs``` folder into your machine 
 sudo bash -c "cat config.terminator > ~/.config/terminator/config"
 ```
 ![img](images/terminator.png)
+
 ## Enable 'minimize on click' on Ubuntu dock
 
 Open Terminal and run
-```
+```bash
 gsettings set org.gnome.shell.extensions.dash-to-dock click-action 'minimize'
 ```
 To revert to the default option, simply run 
-```
+```bash
 gsettings reset org.gnome.shell.extensions.dash-to-dock click-action
 ```
 Also, run the following to see all possible permitted values 
-```
+```bash
 gsettings range org.gnome.shell.extensions.dash-to-dock click-action
 ```
 
@@ -93,12 +95,47 @@ Found Windows Boot Manager on /dev/sda1@/EFI/Microsoft/Boot/bootmgfw.efi
 Adding boot menu entry for EFI firmware configuration
 done
 ```
+## Disable Icons animation in the Applications menu
+### Method 1: GUI Way
+```bash
+sudo apt install dconf-editor 
+# sudo apt-get remove dconf-editor
+# sudo apt-get remove --auto-remove dconf-editor
+# sudo apt-get purge dconf-editor￼
+# sudo apt-get purge --auto-remove dconf-editor￼
+```
+Carefully navigate to ```/org/gnome/desktop/interface/``` and toggle the ```Enable-Animations``` option to ```OFF```.
+### Method 2: Command line way
+```bash
+gsettings set org.gnome.desktop.interface enable-animations false
+```
+Bing it back:
+```bash
+gsettings set org.gnome.desktop.interface enable-animations true
+```
+## Tree: list contents of directories in a tree-like format
+```bash
+sudo apt-get install tree
+man tree
+tree -L 3 -d -o filename
+# -d            : List directories only.
+# -L level      : Max display depth of the directory tree.
+# -o filename   : Send output to filename
+# -h            : Print the size of each file but in a more human readable way
+# -u            : Print the username
+```
+![img](images/tree.jpg)
 
+## xdg-open: open a file with your preferred application
+```bash
+xdg-open file.pdf
+
+```
 # Errors
 
 ## [No sound Ubuntu](https://help.ubuntu.com/community/SoundTroubleshootingProcedure)
 
-```
+```bash
 sudo apt-get remove --purge pulseaudio pulseaudio-utils pavucontrol
 killall pulseaudio ; rm -r ~/.config/pulse ; rm -r ~/.pulse*
 mkdir ~/.config/pulse
