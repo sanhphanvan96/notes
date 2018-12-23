@@ -35,6 +35,7 @@ gsettings set org.pantheon.files.preferences single-click false
 ```bash
 cd /usr/share/applications # or cd ~/.local/share/applications
 sudo nano firefox.desktop
+sudo update-icon-caches /usr/share/icons/*
 ```
 
 Set ```Icon=/path/of/your/icon```
@@ -131,6 +132,15 @@ tree -L 3 -d -o filename
 xdg-open file.pdf
 
 ```
+
+## Appmenu - view all applications via a dropdown
+```bash
+sudo apt-add-repository ppa:diesch/testing
+sudo apt-get update
+sudo apt-get install classicmenu-indicator
+```
+![img](images/classicmenu-indicator.jpg)
+
 # Errors
 
 ## [No sound Ubuntu](https://help.ubuntu.com/community/SoundTroubleshootingProcedure)
