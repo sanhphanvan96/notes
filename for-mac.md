@@ -1,3 +1,7 @@
+- [MacOS](#macos)
+  - [Useful commands](#useful-commands)
+  - [Useful key shortcuts](#useful-key-shortcuts)
+  - [Error](#error)
 # MacOS
 ## Useful commands
 
