@@ -12,3 +12,9 @@ vagrant status
 vagrant up
 vargrant ssh
 ```
+
+# Errors
+## Vagrant: shared folder error
+```
+vagrant plugin install vagrant-vbguest
+```
