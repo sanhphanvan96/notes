@@ -47,6 +47,11 @@ or
 ```bash
 gsettings set org.pantheon.files.preferences single-click false
 ```
+
+Change icon:
+```bash
+nano /usr/share/applications/io.elementary.files.desktop
+```
 ## Change An Application Icon in Ubuntu Unity
 
 ```bash
