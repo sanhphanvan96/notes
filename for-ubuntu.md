@@ -13,8 +13,10 @@
   - [Tree: list contents of directories in a tree-like format](#tree-list-contents-of-directories-in-a-tree-like-format)
   - [xdg-open: open a file with your preferred application](#xdg-open-open-a-file-with-your-preferred-application)
   - [Appmenu - view all applications via a dropdown](#appmenu---view-all-applications-via-a-dropdown)
+  - [Reset default font setting](#reset-default-font-setting)
 - [Errors](#errors)
   - [No sound Ubuntu](#no-sound-ubuntu)
+  - [Windows and Linux Showing Different Times When Dual Booting](#windows-and-linux-showing-different-times-when-dual-booting)
 # For Ubuntu
 
 ## [Fcitx-Unikey](https://www.sitecuatui.com/fcitx-unikey/)
@@ -163,6 +165,15 @@ sudo apt-get install classicmenu-indicator
 ```
 ![img](images/classicmenu-indicator.jpg)
 
+## Reset default font setting
+```bash
+gsettings reset org.gnome.desktop.interface font-name
+gsettings reset org.gnome.desktop.interface document-font-name
+gsettings reset org.gnome.desktop.interface monospace-font-name
+gsettings reset org.gnome.desktop.wm.preferences titlebar-font
+gsettings reset org.gnome.nautilus.desktop font
+gsettings reset org.gnome.desktop.interface text-scaling-factor
+```
 # Errors
 
 ## [No sound Ubuntu](https://help.ubuntu.com/community/SoundTroubleshootingProcedure)
@@ -173,3 +184,10 @@ killall pulseaudio ; rm -r ~/.config/pulse ; rm -r ~/.pulse*
 mkdir ~/.config/pulse
 sudo apt-get install pulseaudio pulseaudio-utils pavucontrol
 ```
+
+## [Windows and Linux Showing Different Times When Dual Booting](https://www.howtogeek.com/323390/how-to-fix-windows-and-linux-showing-different-times-when-dual-booting/)
+
+```
+timedatectl set-local-rtc 1 --adjust-system-clock
+```
+
