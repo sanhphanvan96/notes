@@ -8,7 +8,11 @@ sudo pip install --upgrade pip
 sudo pip install requests==2.6.0
 ```
 
-```
+```sh
+#content of directories
+├── docker-compose.yml
+├── index.html
+├── index.js
 ├── nginx
 │   ├── certs
 │   │   ├── fullchain.pem
@@ -18,7 +22,8 @@ sudo pip install requests==2.6.0
 │       └── a-page.conf
 ```
 
-```docker
+```yaml
+#docker-compose.yml
 version: '3.1'
 
 services:
@@ -47,7 +52,6 @@ server {
 
     return 301 https://$server_name$request_uri;
 }
-
 ```
 
 ```nginx
