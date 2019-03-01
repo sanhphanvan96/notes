@@ -658,6 +658,55 @@ git commit
 git config --global alias.co checkout
 git config --global alias.br branch
 ```
+
+- [Clone a subdirectory only of a Git repository?](https://stackoverflow.com/a/13738951/7596401) => keywords: ```sparse clone/sparse checkout```
+
+    ```bash
+    mkdir <repo>
+    cd <repo>
+    git init
+    git remote add -f origin <url>
+    ```
+    - This creates an empty repository with your remote, and fetches all objects but doesn't check them out. Then do:
+    ```bash
+    git config core.sparseCheckout true
+    ```
+    - Define which files/folders you want to actually check out. This is done by listing them in .git/info/sparse-checkout, eg:
+    ```bash
+    echo "some/dir/" >> .git/info/sparse-checkout
+    echo "another/sub/tree" >> .git/info/sparse-checkout
+    ```
+    - Update your empty repo with the state from the remote
+    ```bash
+    git pull origin master
+    or
+    git pull --depth=1 origin master # shallow clone cuts off the history and the sparse checkout only pulls the files matching your patterns
+    ```
+    - Bonus: as a function
+    ```bash
+    function git_sparse_clone() (
+        rurl="$1" localdir="$2" && shift 2
+
+        mkdir -p "$localdir"
+        cd "$localdir"
+
+        git init
+        git remote add -f origin "$rurl"
+
+        git config core.sparseCheckout true
+
+        # Loops over remaining args
+        for i; do
+            echo "$i" >> .git/info/sparse-checkout
+        done
+
+        git pull origin master
+    )
+    ```
+        - Usage: 
+        ```bash
+        git_sparse_clone "http://github.com/tj/n" "./local/location" "/bin"
+        ```
 16. mysql
 
 - [Create new user and grant permissions](https://www.digitalocean.com/community/tutorials/how-to-create-a-new-user-and-grant-permissions-in-mysql):
