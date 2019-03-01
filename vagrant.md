@@ -1,5 +1,5 @@
 # Vagrant
-
+```
 vagrant box list
 vagrant destroy
 vagrant global-status
@@ -11,3 +11,10 @@ vagrant ssh acs
 vagrant status
 vagrant up
 vargrant ssh
+```
+
+# Errors
+## Vagrant: shared folder error
+```
+vagrant plugin install vagrant-vbguest
+```
