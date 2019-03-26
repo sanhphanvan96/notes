@@ -7,14 +7,17 @@
     - [5. Change Screenshot Location](#5-change-screenshot-location)
     - [6. Change Screenshot File Format](#6-change-screenshot-file-format)
     - [7. Records all terminal output (3rd party)](#7-records-all-terminal-output-3rd-party)
-    - [8. Launch application from terminal: edit ```.zshrc``` and add these lines at the end](#8-launch-application-from-terminal-edit-zshrc-and-add-these-lines-at-the-end)
+    - [8. Launch application from terminal: edit `.zshrc` and add these lines at the end](#8-launch-application-from-terminal-edit-zshrc-and-add-these-lines-at-the-end)
     - [9. Installing multiple versions of Python](#9-installing-multiple-versions-of-python)
     - [10. Run, stop Docker from terminal](#10-run-stop-docker-from-terminal)
+    - [11. Syntax highlighting in nano on Mac OS X](#11-syntax-highlighting-in-nano-on-mac-os-x)
   - [Useful key shortcuts](#useful-key-shortcuts)
-    - [1. Show hidden files in Finder ```shift + command + .```](#1-show-hidden-files-in-finder-shift--command)
+    - [1. Show hidden files in Finder `shift + command + .`](#1-show-hidden-files-in-finder-shift--command)
   - [Error](#error)
     - [1. rails:](#1-rails)
+
 # MacOS
+
 ## Useful commands
 
 ### 1. Turn Off Dashboard
@@ -48,6 +51,7 @@ mkfile 1g test.abc
 ### 3. Check the Uptime Of Your Mac
 
 - To see how long our Mac has gone without a restart
+
 ```
 uptime
 ```
@@ -60,6 +64,7 @@ killall Finder
 ```
 
 - To revert the changes:
+
 ```
 defaults write com.apple.finder QLEnableTextSelection -bool FALSE
 killall Finder
@@ -92,16 +97,20 @@ killall SystemUIServer
 ### 7. Records all terminal output (3rd party)
 
 - Install the recorder
+
 ```
 brew install asciinema
 ```
+
 - Start recording
+
 ```
 asciinema rec
 ```
-- This spawns a new shell instance and records all terminal output. When you're ready to finish simply exit the shell either by typing ```exit``` or hitting ```Ctrl-D```.
 
-### 8. Launch application from terminal: edit ```.zshrc``` and add these lines at the end
+- This spawns a new shell instance and records all terminal output. When you're ready to finish simply exit the shell either by typing `exit` or hitting `Ctrl-D`.
+
+### 8. Launch application from terminal: edit `.zshrc` and add these lines at the end
 
 ```zsh
 # export for mysql
@@ -137,6 +146,7 @@ export PATH="$HOME/.rbenv/shims:$PATH"
 ```
 
 ### 9. [Installing multiple versions of Python](https://github.com/pyenv/pyenv)
+
 - tutorial [https://weknowinc.com/blog/running-multiple-python-versions-mac-osx](https://weknowinc.com/blog/running-multiple-python-versions-mac-osx)
 
 ### 10. Run, stop Docker from terminal
@@ -146,10 +156,56 @@ alias docker-service="open -a /Applications/Docker.app --hide"
 alias docker-stop="ps -ax | grep "/Applications/Docker.app/Contents/MacOS/Docker" | head -1 | awk {'print $1'} | xargs kill -9"
 ```
 
+### 11. Syntax highlighting in nano on Mac OS X
+
+- install nano
+
+```sh
+# install nano from homebrew
+brew install nano
+
+# update your nanorc file with the contents of the nanorc file below
+nano ~/.nanorc
+
+# re-open your terminal and you'll have syntax highlighting
+```
+
+- ~/.nanorc
+
+```php
+include /usr/local/share/nano/asm.nanorc
+include /usr/local/share/nano/awk.nanorc
+include /usr/local/share/nano/c.nanorc
+include /usr/local/share/nano/cmake.nanorc
+include /usr/local/share/nano/css.nanorc
+include /usr/local/share/nano/debian.nanorc
+include /usr/local/share/nano/fortran.nanorc
+include /usr/local/share/nano/gentoo.nanorc
+include /usr/local/share/nano/groff.nanorc
+include /usr/local/share/nano/html.nanorc
+include /usr/local/share/nano/java.nanorc
+include /usr/local/share/nano/makefile.nanorc
+include /usr/local/share/nano/man.nanorc
+include /usr/local/share/nano/mgp.nanorc
+include /usr/local/share/nano/mutt.nanorc
+include /usr/local/share/nano/nanorc.nanorc
+include /usr/local/share/nano/objc.nanorc
+include /usr/local/share/nano/ocaml.nanorc
+include /usr/local/share/nano/patch.nanorc
+include /usr/local/share/nano/perl.nanorc
+include /usr/local/share/nano/php.nanorc
+include /usr/local/share/nano/pov.nanorc
+include /usr/local/share/nano/python.nanorc
+include /usr/local/share/nano/ruby.nanorc
+include /usr/local/share/nano/sh.nanorc
+include /usr/local/share/nano/tcl.nanorc
+include /usr/local/share/nano/tex.nanorc
+include /usr/local/share/nano/xml.nanorc
+```
+
 ## Useful key shortcuts
 
-### 1. Show hidden files in Finder ```shift + command + .```
-
+### 1. Show hidden files in Finder `shift + command + .`
 
 ## Error
 
@@ -161,7 +217,9 @@ alias docker-stop="ps -ax | grep "/Applications/Docker.app/Contents/MacOS/Docker
 bundle config build.sqlite3 --with-sqlite3-include=$HOME/include --with-sqlite3-lib=$HOME/lib --with-sqlite3-dir=$HOME/bin
 bundle install
 ```
+
 - bundle install error: mysql2
+
 ```
 Errno::EPERM: Operation not permitted @ apply2files -
 /Users/me/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/mysql2-0.4.9/CHANGELOG.md
