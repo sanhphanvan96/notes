@@ -40,7 +40,9 @@
   - [18. openssl](#18-openssl)
   - [9999. Some combine commands](#9999-some-combine-commands)
 - [END](#end)
+
 # Install for Kali
+
 ## [Adding a new user in Kali Linux](https://www.linkedin.com/pulse/20140502074357-79939846-adding-a-new-user-in-kali-linux)
 
 ```sh
@@ -52,13 +54,17 @@ usermod -a -G sudo username
 
 chsh -s /bin/bash username
 ```
+
 ## [Oh My ZSH](https://github.com/robbyrussell/oh-my-zsh)
 
-```sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"```
+`sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"`
+
 ```sh
 nano ~/.zshrc
 ```
+
 and change
+
 ```
 ZSH_THEME="gnzh"
 ```
@@ -87,7 +93,9 @@ sudo apt-get install -f # Install dependencies
 cd ~
 wget http://c758482.r82.cf2.rackcdn.com/sublime-text_build-3083_amd64.deb
 ```
+
 - Key
+
 ```
 ----- BEGIN LICENSE -----
 Member J2TeaM
@@ -103,11 +111,15 @@ DD9AF44B 99C49590 D2DBDEE1 75860FD2
 8C8BB2AD B2ECE5A4 EFC08AF2 25A9B864
 ------ END LICENSE ------
 ```
+
 ## Add application to dash (launch icon)
+
 ```
 sudo vim /usr/share/applications/intellij.desktop
 ```
+
 - Add these lines
+
 ```
 [Desktop Entry]
 Version=13.0
@@ -119,12 +131,14 @@ Exec=/home/rob/.intellij-13/bin/idea.sh
 Name=IntelliJ
 Icon=/home/rob/.intellij-13/bin/idea.png
 ```
+
 ## [Install NodeJS](https://nodejs.org/en/download/package-manager/)
 
 ```
 curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
 sudo apt-get install -y nodejs
 ```
+
 - To install the Yarn package manager, run:
 
 ```
@@ -132,16 +146,20 @@ sudo apt-get install -y nodejs
      echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
      sudo apt-get update && sudo apt-get install yarn
 ```
+
 ## [Git on the Server - Generating Your SSH Public Key](https://help.github.com/articles/connecting-to-github-with-ssh/)
 
 - Check to see if you have a key already by going to that directory and listing the contents
+
 ```
 $ cd ~/.ssh
 $ ls
 authorized_keys2  id_dsa       known_hosts
 config            id_dsa.pub
 ```
+
 - Generate SSH key
+
 ```sh
 $ ssh-keygen
 Generating public/private rsa key pair.
@@ -154,7 +172,9 @@ Your public key has been saved in /home/sanhpv/.ssh/id_rsa.pub.
 The key fingerprint is:
 d0:82:24:8e:d7:f1:bb:9b:33:53:96:93:49:da:9b:e3 sanhpv@me.com
 ```
+
 - The public keys look something like this
+
 ```
 $ cat ~/.ssh/id_rsa.pub
 ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEAklOUpkDHrfHY17SbrmTIpNLTGK9Tjom/BWDSU
@@ -164,26 +184,33 @@ t3FaoJoAsncM1Q9x5+3V0Ww68/eIFmb1zuUFljQJKprrX88XypNDvjYNby6vw/Pb0rwert/En
 mZ+AW4OZPnTPI89ZPmVMLuayrD2cE86Z/il8b+gw3r3+1nKatmIkjn2so1d01QraTlMqVSsbx
 NrRFi9wrf+M7Q== sanhpv@me.com
 ```
+
 - [Add this key to Github account](https://help.github.com/articles/adding-a-new-ssh-key-to-your-github-account/)
 
 ## Install Atom
+
 ```sh
     curl -sL https://packagecloud.io/AtomEditor/atom/gpgkey | sudo apt-key add -
     sudo sh -c 'echo "deb [arch=amd64] https://packagecloud.io/AtomEditor/atom/any/ any main" > /etc/apt/sources.list.d/atom.list'
     sudo apt-get update
     sudo apt-get install atom
 ```
+
 ## [Install ‘apt-fast’ to Speed Up apt-get/apt Package Downloads Using Multiple Mirrors](https://github.com/ilikenwf/apt-fast)
 
 - Firstly add the the PPA for apt-fast package as follows and then update your system.
+
 ```
 sudo add-apt-repository ppa:apt-fast/stable
 sudo apt-get update
 ```
+
 - Then
+
 ```
 sudo apt-get -y install apt-fast
 ```
+
 ## Install Mongodb (docker)
 
 - Dockerfile
@@ -193,12 +220,12 @@ FROM mongo
 VOLUME /data/db
 ```
 
-- build mongo image: ```docker build -t mongodb-expose-27017 .```
+- build mongo image: `docker build -t mongodb-expose-27017 .`
 
 - docker-compose.yml
 
 ```yml
-version: '3'
+version: "3"
 services:
   mongodb:
     container_name: mongodb-expose-27017
@@ -208,6 +235,7 @@ services:
     volumes:
       - ./db:/data/db
 ```
+
 - [install MongoDB Compass](https://docs.mongodb.com/compass/master/install/):
 
 ```sh
@@ -215,16 +243,17 @@ wget https://downloads.mongodb.com/compass/mongodb-compass_1.12.5_amd64.deb;
 sudo dpkg -i mongodb-compass_1.12.5_amd64.deb;
 DEBUG=* mongodb-compass;
 ```
+
 - Test connect by NodeJs:
 
 ```js
-const MongoClient = require('mongodb').MongoClient
+const MongoClient = require("mongodb").MongoClient;
 
-MongoClient.connect('mongodb://0.0.0.0:27017', (err, database) => {
-    if (err) return console.log(err)
-    db = database.db("db_name")
-    collection = db.collection("collection_name")
-})
+MongoClient.connect("mongodb://0.0.0.0:27017", (err, database) => {
+  if (err) return console.log(err);
+  db = database.db("db_name");
+  collection = db.collection("collection_name");
+});
 ```
 
 ## Install Ibus Unikey
@@ -232,26 +261,29 @@ MongoClient.connect('mongodb://0.0.0.0:27017', (err, database) => {
 ```sh
 sudo apt-get install ibus-unikey
 ```
+
 - Logout and login again to make new plugin works.
 
-- Go to ```Settings``` -> ```Region & Language```, add ```Vietnamese(Unikey)```.
+- Go to `Settings` -> `Region & Language`, add `Vietnamese(Unikey)`.
 
-- To switch input type press ```Supper``` + ```Space```
+- To switch input type press `Supper` + `Space`
 
 ## Install aria2: lightweight multi-protocol, multi-connection command-line, cross platform utility
+
 - Features: [https://github.com/aria2/aria2#features](https://github.com/aria2/aria2#features)
 - Options: [https://aria2.github.io/manual/en/html/aria2c.html#options](https://aria2.github.io/manual/en/html/aria2c.html#options)
-- Sample command: ```aria2c -x 16 -s 16 --file-allocation=none -d ./```
+- Sample command: `aria2c -x 16 -s 16 --file-allocation=none -d ./`
 
 # Errors
 
-## 1. Cannot use apt-get 
+## 1. Cannot use apt-get
 
 ```
 E: Could not get lock /var/lib/dpkg/lock - open (11 Resource temporarily unavailable)
 
 E: Unable to lock the administration directory (/var/lib/dpkg/) is another process using it?
 ```
+
 ```sh
 sudo rm /var/lib/apt/lists/lock
 
@@ -261,13 +293,17 @@ sudo rm /var/lib/dpkg/lock
 ```
 
 ## 2. [Get rid of Sudo](https://unix.stackexchange.com/a/26077)
+
 - docker
+
 ```sh
 sudo usermod -aG docker $USER # recommended, specially for docker
 ```
+
 ```sh
 sudo chown sanhpv /var/run/docker.sock # shouldn't do this
 ```
+
 ## 3. MySQL: Access denied for user 'root'@'localhost'
 
 ```
@@ -278,7 +314,7 @@ sudo mysqld_safe --skip-grant-tables &
 mysql -u root
 ```
 
-``` mysql
+```mysql
 mysql> use mysql;
 Database changed
 mysql> select * from  user;
@@ -298,17 +334,20 @@ mysql> select host, user from user;
 1 row in set (0.00 sec)
 mysql> quit;
 ```
+
 ```sh
 [root ~]# kill -KILL [PID of mysqld_safe]
 [root ~]# kill -KILL [PID of mysqld]
 [root ~]# service mysql start
 ```
+
 ## 4. /var/log Disk Space Issues
 
 - Recently, I started noticing that my computer keeps running out of space for no reason at all. I
-mean I didn't download any large files and my root drive should not be having any space
-issues, and yet my computer kept tellling me that I had '0' bytes available or free on my /root/
-drive. As I found it hard to believe, I invoked the 'df' command (for disk space usage):
+  mean I didn't download any large files and my root drive should not be having any space
+  issues, and yet my computer kept tellling me that I had '0' bytes available or free on my /root/
+  drive. As I found it hard to believe, I invoked the 'df' command (for disk space usage):
+
 ```
 sanhpv@kali: df
 
@@ -331,9 +370,10 @@ sanhpv@kali: find / -size +2000M
 /var/log/syslog
 /var/log/kern.log.1
 ```
+
 - Clearly, the folder '/var/log' needs my attention. Seems like some kernel log files are
-humongous in size and have not been 'rotated' (explained later). So, I listed the contents of
-this directory arranged in order of decreasing size:
+  humongous in size and have not been 'rotated' (explained later). So, I listed the contents of
+  this directory arranged in order of decreasing size:
 
 ```
 sanhpv@kali: cd /var/log
@@ -355,21 +395,22 @@ total 34891876
 
 sanhpv@kali: sudo /etc/cron.daily/logrotate
 ```
+
 - It ran for a while as it rotated the logs. logrotate is meant to automate the task of
-administrating log files on systems that generate a heavy amount of logs. It is responsible for
-compressing, rotating, and delivering log files. Read more about it [here](https://linux.die.net/man/8/logrotate).
+  administrating log files on systems that generate a heavy amount of logs. It is responsible for
+  compressing, rotating, and delivering log files. Read more about it [here](https://linux.die.net/man/8/logrotate).
 
 - What I hoped by running logrotate was that it would rotate and compress the old log files so I
-can quickly remove those from my system. Why didn't I just delete that '/var/log' directory
-directly? Because that would break things. '/var/log' is needed by the system and the system
-expects to see it. Deleting it is a bad idea. So, I needed to ensure that I don't delete anything
-of significance.
-After a while, logrotate completed execution and I was able to see some '.gz' compresses files
-in this directory. I quickly removed (or deleted) these.
+  can quickly remove those from my system. Why didn't I just delete that '/var/log' directory
+  directly? Because that would break things. '/var/log' is needed by the system and the system
+  expects to see it. Deleting it is a bad idea. So, I needed to ensure that I don't delete anything
+  of significance.
+  After a while, logrotate completed execution and I was able to see some '.gz' compresses files
+  in this directory. I quickly removed (or deleted) these.
 
 - Since these had already been rotated, I figured it would be safe to remove these as well. But instead of doing
-an 'rm' to remove them, I decided to just empty them (in case they were being used
-somewhere)
+  an 'rm' to remove them, I decided to just empty them (in case they were being used
+  somewhere)
 
 ```
 sanhpv@kali: sudo su
@@ -382,16 +423,21 @@ sanhpv@kali: >kern.log
 # Some helpful commands
 
 ## 1. Multiple firefox profile
+
 ```
 ./firefox -ProfileManager
 ```
+
 ## 2. services
+
 ```
 sudo service --status-all | grep +
 sudo service mysql start
 sudo service mysql stop
 ```
+
 ## 3. docker
+
 ```sh
 docker exec -it f525926e0172 bash
 docker inspect ce84c1397ff0 --format '{{ .Config.Env | json }}' | python -m json.tool
@@ -412,6 +458,7 @@ docker rmi $(docker images -q) #remove all docker images, forcefully: -f
 docker volume ls -qf dangling=true | xargs -r docker volume rm #remove all docker volumes
 docker rm (docker ps -a |grep redis |awk '{print $1}') #Remove all containers by image.ex: remove all redis containers:
 ```
+
 - Dockerfile
 
 ```dockerfile
@@ -433,6 +480,7 @@ RUN apt-get install python-mysqldb -y
 # Python script for run later
 COPY ./wait-for-mysql.py /tmp/wait-for-mysql.py
 ```
+
 ```python
 import MySQLdb
 import time
@@ -442,7 +490,7 @@ def try_to_connect():
         connection = MySQLdb.connect(
                 host = 'aws-mysql',
                 user = 'sanhpv',
-                passwd = 'NYBpHxUmbGC9u3PMdPCR') #NUT YELP BESTBUY park HULU xbox USA music bestbuy GOLF COFFEE 9 usa 3 PARK MUSIC drip PARK COFFEE ROPE 
+                passwd = 'NYBpHxUmbGC9u3PMdPCR') #NUT YELP BESTBUY park HULU xbox USA music bestbuy GOLF COFFEE 9 usa 3 PARK MUSIC drip PARK COFFEE ROPE
         cursor = connection.cursor()
         cursor.execute("USE aws-db")
     except Exception, e:
@@ -508,6 +556,7 @@ docker push sanhphanvan/awesome
 ```
 
 ## 4. maven
+
 ```
 mvn spring-boot:run
 mvn clean package
@@ -517,42 +566,51 @@ mvn -Dmaven.test.skip=true install
 mvn -Dmaven.test.skip=true -Dspring.profiles.active=docker install
 ```
 
+`validate` - validate the project is correct and all necessary information is available
 
-```validate``` - validate the project is correct and all necessary information is available
+`compile` - compile the source code of the project
 
-```compile``` - compile the source code of the project
+`test` - test the compiled source code using a suitable unit testing framework. These tests should not require the code be packaged or deployed
 
-```test``` - test the compiled source code using a suitable unit testing framework. These tests should not require the code be packaged or deployed
+`package` - take the compiled code and package it in its distributable format, such as a JAR.
 
-```package``` - take the compiled code and package it in its distributable format, such as a JAR.
+`verify` - run any checks on results of integration tests to ensure quality criteria are met
 
-```verify``` - run any checks on results of integration tests to ensure quality criteria are met
+`install` - install the package into the local repository, for use as a dependency in other projects locally
 
-```install``` - install the package into the local repository, for use as a dependency in other projects locally
-
-```deploy``` - done in the build environment, copies the final package to the remote repository for sharing with other developers and projects
+`deploy` - done in the build environment, copies the final package to the remote repository for sharing with other developers and projects
 
 ## 5. java
+
 ```
 update-java-alternatives --set java-1.8.0-openjdk-amd64
 ```
+
 ## 6. systemctl
+
 ```sh
 systemctl disable docker # disable boot service
 systemctl --user start pulseaudio
 systemctl --user status pulseaudio
 ```
+
 ## 7. sqlmap
+
 ```
 sqlmap -r ~/BurpRequest/minglex -p id --dbms=MySql --dbs --proxy=http://127.0.0.1:8080 --flush-session
 ```
+
 ## 8. python
+
 - The SimpleHTTPServer module that comes with Python is a simple HTTP server that
-provides standard GET and HEAD request handlers
+  provides standard GET and HEAD request handlers
+
 ```
 python -m SimpleHTTPServer 9696
 ```
+
 - or Ruby (recommended): Run [WEBrick](https://apidock.com/ruby/WEBrick) HTTP server
+
 ```
 ruby -run -ehttpd . -9696
 ```
@@ -561,32 +619,40 @@ ruby -run -ehttpd . -9696
 
 - Rather than step through code with a debugger, you can add the code module to your Python program to instruct the program to stop execution and enter into the interactive mode in order to examine how your code is working. The code module is part of the Python standard library.
 
-    - This is useful because you are able to leverage an interpreter without sacrificing the complexity and permanence that programming files can provide. Through using the code module you can avoid using print() statements throughout your code as a form of debugging, which can become unwieldy over time.
+  - This is useful because you are able to leverage an interpreter without sacrificing the complexity and permanence that programming files can provide. Through using the code module you can avoid using print() statements throughout your code as a form of debugging, which can become unwieldy over time.
 
-    - To make use of the module as a method for debugging, you can use the interact() function of the module, which stops execution of the program at the point at which it is called, and provides you with an interactive console so that you can examine the current state of your program.
+  - To make use of the module as a method for debugging, you can use the interact() function of the module, which stops execution of the program at the point at which it is called, and provides you with an interactive console so that you can examine the current state of your program.
+
 ```python
 import code
 ```
-- insert this line to wherever you wanna create an object instance of the InteractiveConsole class, which emulates the behavior of the interactive Python interpreter 
+
+- insert this line to wherever you wanna create an object instance of the InteractiveConsole class, which emulates the behavior of the interactive Python interpreter
+
 ```python
 code.interact(local=dict(globals(), **locals()))
 ```
+
 - Enable colored terminal output for Python’s logging module [coloredlogs](https://pypi.org/project/coloredlogs/)
+
 ```python
 import coloredlogs, logging
 coloredlogs.install() #coloredlogs.install(level='DEBUG')
 ```
+
 - with Ruby/Rails
 
 ```
 gem install pry
 ```
+
 ```ruby
 require 'pry'
 
 puts 'requiring pry'
 binding.pry
 ```
+
 ```ruby
 From: /home/richard/Documents/eCommerceExample/spec/controllers/categories_controller_spec.rb @ line 21 :
 
@@ -606,30 +672,38 @@ From: /home/richard/Documents/eCommerceExample/spec/controllers/categories_contr
 ```
 
 - Pyenv: Install Multiple Python Versions for Specific Project
-    - Pyenv is a simple, powerful and cross-platform tool for managing multiple Python versions on Linux systems, that used for.
-        - Switching the global Python version on a per-user basis.
-        - Setting the local Python version on per-project basis.
-        - Managing of virtual environments created by anaconda or virtualenv.
-        - Overriding the Python version with an environment variable.
-        - Searching commands from multiple versions of Python and more.
-    - Github repo: [https://github.com/pyenv/pyenv](https://github.com/pyenv/pyenv)
-    - Tutorial [https://www.tecmint.com/pyenv-install-and-manage-multiple-python-versions-in-linux/](https://www.tecmint.com/pyenv-install-and-manage-multiple-python-versions-in-linux/)
-    - For Ruby: rbenv [https://github.com/rbenv/rbenv](https://github.com/rbenv/rbenv)
+  - Pyenv is a simple, powerful and cross-platform tool for managing multiple Python versions on Linux systems, that used for.
+    - Switching the global Python version on a per-user basis.
+    - Setting the local Python version on per-project basis.
+    - Managing of virtual environments created by anaconda or virtualenv.
+    - Overriding the Python version with an environment variable.
+    - Searching commands from multiple versions of Python and more.
+  - Github repo: [https://github.com/pyenv/pyenv](https://github.com/pyenv/pyenv)
+  - Tutorial [https://www.tecmint.com/pyenv-install-and-manage-multiple-python-versions-in-linux/](https://www.tecmint.com/pyenv-install-and-manage-multiple-python-versions-in-linux/)
+  - For Ruby: rbenv [https://github.com/rbenv/rbenv](https://github.com/rbenv/rbenv)
 
 ## 9. netstat
+
 ```
 netstat -anl | grep LIST | grep 3306
 ```
+
 ## 10. time
+
 ```
 time ls -R
 ```
+
 ## 11. apt / apt-get
-- ran a dpkg command to install a couple of .deb packages (ex: ```sudo dpkg -i google-chrome-stable_current_amd64.deb```), but the install failed because some dependencies were missing.
+
+- ran a dpkg command to install a couple of .deb packages (ex: `sudo dpkg -i google-chrome-stable_current_amd64.deb`), but the install failed because some dependencies were missing.
+
 ```sh
 apt-get -f install #-f, --fix-broken
 ```
+
 - Most used commands:
+
 ```
   update - Retrieve new lists of packages
   upgrade - Perform an upgrade
@@ -647,12 +721,17 @@ apt-get -f install #-f, --fix-broken
   download - Download the binary package into the current directory
   changelog - Download and display the changelog for the given package
 ```
+
 ## 12. ngrok
-- To start a HTTP tunnel on port 80, run this next: 
+
+- To start a HTTP tunnel on port 80, run this next:
+
 ```
 ./ngrok http 80
 ```
+
 ## 13. yarn and npm
+
 ```sh
 npm install === yarn #Install is the default behavior.
 npm install taco --save === yarn add taco #The Taco package is saved to your package.jsonimmediately.
@@ -673,27 +752,29 @@ npm test === yarn test
 npm install --production === yarn --production
 
 ```
+
 - [Things yarn has that NPM doesn’t](https://infinite.red/files/yarn.pdf)
 
-```yarn licenses ls``` — Allows you to inspect the licenses of your dependencies
+`yarn licenses ls` — Allows you to inspect the licenses of your dependencies
 
-```yarn licenses generate-disclaimer``` — Automatically create your license dependency disclaimer
+`yarn licenses generate-disclaimer` — Automatically create your license dependency disclaimer
 
-```yarn why taco``` — Identify why ‘taco’ package is installed, detailing which other packages depend upon it (thanks Olivier Combe).
+`yarn why taco` — Identify why ‘taco’ package is installed, detailing which other packages depend upon it (thanks Olivier Combe).
 
-```yarn upgrade-interactive``` — Allows you to selectively upgrade specific packages in a simple way
+`yarn upgrade-interactive` — Allows you to selectively upgrade specific packages in a simple way
 
 ## 14. [Rails simple cheat sheet](https://gist.github.com/mdang/95b4f54cadf12e7e0415)
 
 ## 15. Git
 
-- Squash and Merge: Takes all the commits from the ```bugfix``` branch and merges it with your current branch (ex: ```master```).
+- Squash and Merge: Takes all the commits from the `bugfix` branch and merges it with your current branch (ex: `master`).
 
 ```
 git checkout master
 git merge --squash bugfix
 git commit
 ```
+
 - git aliases:
 
 ```
@@ -701,62 +782,74 @@ git config --global alias.co checkout
 git config --global alias.br branch
 ```
 
-- [Clone a subdirectory only of a Git repository?](https://stackoverflow.com/a/13738951/7596401) => keywords: ```sparse clone/sparse checkout```
+- [Clone a subdirectory only of a Git repository?](https://stackoverflow.com/a/13738951/7596401) => keywords: `sparse clone/sparse checkout`
 
-    ```bash
-    mkdir <repo>
-    cd <repo>
-    git init
-    git remote add -f origin <url>
-    ```
-    - This creates an empty repository with your remote, and fetches all objects but doesn't check them out. Then do:
-    ```bash
-    git config core.sparseCheckout true
-    ```
-    - Define which files/folders you want to actually check out. This is done by listing them in .git/info/sparse-checkout, eg:
-    ```bash
-    echo "some/dir/" >> .git/info/sparse-checkout
-    echo "another/sub/tree" >> .git/info/sparse-checkout
-    ```
-    - Update your empty repo with the state from the remote
-    ```bash
-    git pull origin master
-    or
-    git pull --depth=1 origin master # shallow clone cuts off the history and the sparse checkout only pulls the files matching your patterns
-    ```
-    - Bonus: as a function
-    ```bash
-    function git_sparse_clone() (
-        rurl="$1" localdir="$2" && shift 2
+  ```bash
+  mkdir <repo>
+  cd <repo>
+  git init
+  git remote add -f origin <url>
+  ```
 
-        mkdir -p "$localdir"
-        cd "$localdir"
+  - This creates an empty repository with your remote, and fetches all objects but doesn't check them out. Then do:
 
-        git init
-        git remote add -f origin "$rurl"
+  ```bash
+  git config core.sparseCheckout true
+  ```
 
-        git config core.sparseCheckout true
+  - Define which files/folders you want to actually check out. This is done by listing them in .git/info/sparse-checkout, eg:
 
-        # Loops over remaining args
-        for i; do
-            echo "$i" >> .git/info/sparse-checkout
-        done
+  ```bash
+  echo "some/dir/" >> .git/info/sparse-checkout
+  echo "another/sub/tree" >> .git/info/sparse-checkout
+  ```
 
-        git pull origin master
-    )
-    ```
-        - Usage: 
+  - Update your empty repo with the state from the remote
+
+  ```bash
+  git pull origin master
+  or
+  git pull --depth=1 origin master # shallow clone cuts off the history and the sparse checkout only pulls the files matching your patterns
+  ```
+
+  - Bonus: as a function
+
+  ```bash
+  function git_sparse_clone() (
+      rurl="$1" localdir="$2" && shift 2
+
+      mkdir -p "$localdir"
+      cd "$localdir"
+
+      git init
+      git remote add -f origin "$rurl"
+
+      git config core.sparseCheckout true
+
+      # Loops over remaining args
+      for i; do
+          echo "$i" >> .git/info/sparse-checkout
+      done
+
+      git pull origin master
+  )
+  ```
+
+        - Usage:
         ```bash
         git_sparse_clone "http://github.com/tj/n" "./local/location" "/bin"
         ```
+
 ## 16. mysql
 
 - [Create new user and grant permissions](https://www.digitalocean.com/community/tutorials/how-to-create-a-new-user-and-grant-permissions-in-mysql):
+
 ```SQL
 CREATE USER 'dev'@'localhost' IDENTIFIED BY 'password';
 GRANT INSERT,SELECT ON db.table TO 'dev'@'localhost';
 FLUSH PRIVILEGES;
 ```
+
 ```SQL
 SHOW GRANTS;
 SHOW GRANTS FOR 'dev'@'localhost';
@@ -764,12 +857,14 @@ SHOW GRANTS FOR CURRENT_USER();
 ```
 
 ## 17. stat: display file status
+
 - The stat utility displays information about the file pointed to by file.
-    - Read, write or execute permissions of the named file are not required, but all directories listed in the path name leading to the file must be searchable.  If no argument is given, stat displays information about the file descriptor for standard input. (quoted in ```man stat```)
-    ```bash
-    stat ./
-    stat *.*
-    ```
+  - Read, write or execute permissions of the named file are not required, but all directories listed in the path name leading to the file must be searchable. If no argument is given, stat displays information about the file descriptor for standard input. (quoted in `man stat`)
+  ```bash
+  stat ./
+  stat *.*
+  ```
+
 ## 18. openssl
 
 ```bash
@@ -778,6 +873,7 @@ openssl prime 123456781
 ```
 
 ## 9999. Some combine commands
+
 ```bash
 history | grep docker | awk '{print $1="", $0 }' | sort | uniq
 ```
@@ -798,5 +894,7 @@ for i in `vagrant global-status | grep virtualbox | awk '{ print $1 }'` ; do ech
 ```bash
 echo -e "\e[1;40m" ; clear ; while :; do echo $LINES $COLUMNS $(( $RANDOM % $COLUMNS)) $(( $RANDOM % 72 )) ;sleep 0.05; done|awk '{ letters="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%^&*()"; c=$4; letter=substr(letters,c,1);a[$3]=0;for (x in a) {o=a[x];a[x]=a[x]+1; printf "\033[%s;%sH\033[2;32m%s",o,x,letter; printf "\033[%s;%sH\033[1;37m%s\033[0;0H",a[x],x,letter;if (a[x] >= $1) { a[x]=0; } }}'
 ```
+
 # END
-```code = developer + coffee;```
+
+`code = developer + coffee;`

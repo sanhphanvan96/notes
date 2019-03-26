@@ -1,4 +1,5 @@
 # Vagrant
+
 ```
 vagrant box list
 vagrant destroy
@@ -14,7 +15,9 @@ vargrant ssh
 ```
 
 # Errors
+
 ## Vagrant: shared folder error
+
 ```
 vagrant plugin install vagrant-vbguest
 ```

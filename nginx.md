@@ -1,4 +1,5 @@
 ## SSL: nginx, Let's Encrypt, Docker
+
 ```sh
 sudo yum update
 sudo yum install certbot -y
@@ -24,20 +25,20 @@ sudo pip install requests==2.6.0
 
 ```yaml
 #docker-compose.yml
-version: '3.1'
+version: "3.1"
 
 services:
- nginx:
-   image: nginx:1.13
-   container_name: a-page-nginx
-   restart: always
-   ports:
-     - "80:80"
-     - "443:443"
-   volumes:
-     - ./nginx/conf.d:/etc/nginx/conf.d
-     - ./nginx/certs:/etc/nginx/certs
-     - ./:/usr/share/code
+  nginx:
+    image: nginx:1.13
+    container_name: a-page-nginx
+    restart: always
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx/conf.d:/etc/nginx/conf.d
+      - ./nginx/certs:/etc/nginx/certs
+      - ./:/usr/share/code
 ```
 
 ```nginx

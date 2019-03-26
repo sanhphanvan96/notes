@@ -6,7 +6,9 @@ rails assets:precompile # debug: sass file_name.scss result/filename.css
 ```
 
 # Docker
+
 - Dockerfile
+
 ```dockerfile
 FROM sanhphanvan/rails-2.5.1
 
@@ -50,6 +52,7 @@ ENTRYPOINT ["/usr/bin/init.sh"]
 ```
 
 - init.sh
+
 ```bash
 #!/bin/bash
 
@@ -75,7 +78,9 @@ set -e
 
 exec "$@"
 ```
+
 - .dockerignore
+
 ```
 node_modules
 npm-debug.log
@@ -94,9 +99,11 @@ LICENSE
 # docker
 docker/db
 ```
+
 - docker-compose.yml
+
 ```yml
-version: '2.1'
+version: "2.1"
 
 services:
   rails-server:
@@ -130,12 +137,12 @@ services:
     container_name: rails-phpmyadmin
     image: phpmyadmin/phpmyadmin
     ports:
-        - '8081:80'
+      - "8081:80"
     environment:
       PMA_ARBITRARY: 1
       PMA_HOST: db
       PMA_USER: ${MYSQL_USER}
       PMA_PASSWORD: ${MYSQL_PASSWORD}
     depends_on:
-        - db
+      - db
 ```
