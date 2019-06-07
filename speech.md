@@ -10,18 +10,17 @@ dìu dắt để chúng em có được ngày hôm nay!
 
 5 năm là một khoảng thời gian không dài nhưng đủ để mỗi sinh viên chúng em biết mình đang đứng ở đâu, 
 mình muốn gì, và lựa chọn của mình là đúng hay sai, có đủ sức vùng vẫy sánh vai với các cường quốc 5 châu được hay đó
-Đó là nhờ công lao của quý thầy cô giảng viên và sự nỗ lực của sinh viên ưu tú chúng e sau khi lĩnh hội tư tuỏng HCM, của đảng từ cá môn đại cương, cho đến
+Đó là nhờ công lao của quý thầy cô giảng viên và sự nỗ lực của sinh viên ưu tú chúng e sau khi lĩnh hội tư tưởng HCM, của đảng từ các môn đại cương, cho đến
 kiến thức chuyên môn balaaloa,
 nhận được sự chỉ dạy tận tình của các thầy cô, sự quan tâm chia sẻ của các bạn,
 chúng em đã từng bước trưởng thành. Nỗi hoài nghi ban đầu dần dần biến thành một niềm tin vững chắc, 
 niềm tin mình sẽ trở thành một người có ích cho xã hội, được làm những việc mình thích, theo đuổi ước mơ của mình,
 có thể làm những việc mà người khác không thể làm được, .... hoặc làm được.
 
-
 Cá nhân em rất ấn tượng với nhà trường ngay từ những ngày đầu đặt chân đến đây. 
 Ấn tượng về cơ sở vật chất hiện đại (haha), môi trường học tập thân thiện. 
 Các thầy cô có tâm huyết, nhiệt huyết và chuyên môn thâm hậu, vừa là thầy, vừa là bạn, vừa dạy học, 
-vừa chia sẻ và truyền đạt kinh nghiệm khiến chúng em luôn cảm thấy thoải mái như đang ở nhà mình. Bàn ghế nhà trường như giường ngủ.
+vừa chia sẻ và truyền đạt kinh nghiệm khiến chúng em luôn cảm thấy thoải mái như đang ở nhà mình. Bàn ghế nhà trường như giường ngủ (lol).
 Những kiến thức quý báu mà các thầy cô truyền dạy sẽ mãi là hành trang vững chắc cho chúng em tự tin bước đi trên con đường mình đã chọn.
 
 Các bạn thân mến, thật khó khăn nếu chỉ bước đi một mình.
