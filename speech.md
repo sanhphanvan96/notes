@@ -25,7 +25,7 @@ Những kiến thức quý báu mà các thầy cô truyền dạy sẽ mãi là
 
 Các bạn thân mến, thật khó khăn nếu chỉ bước đi một mình.
 Trong suốt 5 năm qua, mình may mắn được đồng hành cùng các bạn. 
-Chúng ta đã cùng nhau trải qua 2 năm đầy ắp những kỉ niệm vui buồn. 
+Chúng ta đã cùng nhau trải qua 5 năm đầy ắp những kỉ niệm vui buồn. 
 Những ca thi đọt xuất, điểm danh đột ngột, đến lớp mà cả lớp mắt nhắm mắt mở, 
 những câu chuyện bất tận sau giờ học, những buổi teamwork đầy những tranh luận, sôi nổi, 
 những “nỗi sợ” rất “sinh viên” trước những thầy cô nghiêm khắc, những buổi  
