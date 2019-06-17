@@ -896,7 +896,7 @@ echo -e "\e[1;40m" ; clear ; while :; do echo $LINES $COLUMNS $(( $RANDOM % $COL
 ```
 
 ```bash
-ps -o pid,user,%mem,command ax | sort -b -k3 -r
+ps -o pid,user,%mem,command ax | sort -b -k3 -r | grep -z sanhpv
 ```
 # END
 
