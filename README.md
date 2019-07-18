@@ -211,6 +211,14 @@ sudo apt-get update
 sudo apt-get -y install apt-fast
 ```
 
+or the second method:
+
+```
+git clone https://github.com/ilikenwf/apt-fast.git
+cd apt-fast
+sudo ./quick-install.sh
+```
+
 ## Install Mongodb (docker)
 
 - Dockerfile
