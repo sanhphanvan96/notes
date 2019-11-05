@@ -15,10 +15,11 @@
   - [Install Ibus Unikey](#install-ibus-unikey)
   - [Install aria2: lightweight multi-protocol, multi-connection command-line, cross platform utility](#install-aria2-lightweight-multi-protocol-multi-connection-command-line-cross-platform-utility)
 - [Errors](#errors)
-  - [1. Cannot use apt-get](#1-cannot-use-apt-get)
+  - [1. Cannot use apt-get: Could not get lock /var/lib/dpkg/lock](#1-cannot-use-apt-get-could-not-get-lock-varlibdpkglock)
   - [2. Get rid of Sudo](#2-get-rid-of-sudo)
   - [3. MySQL: Access denied for user 'root'@'localhost'](#3-mysql-access-denied-for-user-rootlocalhost)
   - [4. /var/log Disk Space Issues](#4-varlog-disk-space-issues)
+  - [5. Kali cannot connect to network](#5-kali-cannot-connect-to-network)
 - [Some helpful commands](#some-helpful-commands)
   - [1. Multiple firefox profile](#1-multiple-firefox-profile)
   - [2. services](#2-services)
@@ -284,7 +285,7 @@ sudo apt-get install ibus-unikey
 
 # Errors
 
-## 1. Cannot use apt-get
+## 1. Cannot use apt-get: Could not get lock /var/lib/dpkg/lock
 
 ```
 E: Could not get lock /var/lib/dpkg/lock - open (11 Resource temporarily unavailable)
@@ -292,13 +293,40 @@ E: Could not get lock /var/lib/dpkg/lock - open (11 Resource temporarily unavail
 E: Unable to lock the administration directory (/var/lib/dpkg/) is another process using it?
 ```
 
+- Method 1: There could be many reasons why you see this error. The first and most obvious reason is that some other process is using APT package management tool (the apt or apt-get command, in other words). Check if Ubuntu Software Center or Synaptic Package Manager is running or not.
 ```sh
-sudo rm /var/lib/apt/lists/lock
-
-sudo rm /var/cache/apt/archives/lock
-
-sudo rm /var/lib/dpkg/lock
+ps aux | grep -i apt
+sudo kill -9 <process id>
+#or
+sudo killall apt apt-get
 ```
+- Method 2: The first method would fix the problem for you in most cases. But my case was a bit different. I was updating my system and accidentally closed the terminal. For that reason, there were no processes running apt, but it still showed me the error.
+  - In this case, the root cause is the lock file. Lock files are used to prevent two or more processes from using the same data. When apt or apt-commands are run, they create lock files in a few places. If the previous apt command was not terminated properly, the lock files are not deleted and hence they prevent any new instances of apt/apt-get commands.
+
+  ```
+  lsof /var/lib/dpkg/lock
+  lsof /var/lib/apt/lists/lock
+  lsof /var/cache/apt/archives/lock
+  ```
+  - It’s possible that the commands don’t return anything, or return just one number. If they do return at least one number, use the number(s) and kill the processes like this (replace the PID with the numbers you got from the above commands):
+  ```
+  sudo kill -9 PID
+  ```
+
+  - Use the lsof command to get the process ID of the process holding the lock files. Run these commands one by one.
+
+
+  ```sh
+  sudo rm /var/lib/apt/lists/lock
+
+  sudo rm /var/cache/apt/archives/lock
+
+  sudo rm /var/lib/dpkg/lock
+  ```
+  - After that, reconfigure the packages:
+  ```
+  sudo dpkg --configure -a
+  ```
 
 ## 2. [Get rid of Sudo](https://unix.stackexchange.com/a/26077)
 
@@ -426,6 +454,18 @@ sanhpv@kali: >kern.log.1
 sanhpv@kali: >messages.1
 sanhpv@kali: >syslog
 sanhpv@kali: >kern.log
+```
+
+## 5. Kali cannot connect to network
+
+- Restart Network service:
+```
+sudo /etc/init.d/networking restart
+```
+- Cannot connect to some host -> maybe wrong datetime: need to update your datetime
+```
+apt-get install -y ntpdate
+ntpdate -v pool.ntp.org
 ```
 
 # Some helpful commands
