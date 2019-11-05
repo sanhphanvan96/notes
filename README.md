@@ -31,7 +31,7 @@
   - [9. netstat](#9-netstat)
   - [10. time](#10-time)
   - [11. apt / apt-get](#11-apt--apt-get)
-  - [12. ngrok](#12-ngrok)
+  - [12. ngrok or serveo](#12-ngrok-or-serveo)
   - [13. yarn and npm](#13-yarn-and-npm)
   - [14. Rails simple cheat sheet](#14-rails-simple-cheat-sheet)
   - [15. Git](#15-git)
@@ -730,12 +730,22 @@ apt-get -f install #-f, --fix-broken
   changelog - Download and display the changelog for the given package
 ```
 
-## 12. ngrok
+## 12. ngrok or serveo
 
 - To start a HTTP tunnel on port 80, run this next:
 
 ```
 ./ngrok http 80
+```
+
+- Expose local servers to the internet. No installation, no signup with serveo [https://serveo.net/](https://serveo.net/)
+
+```
+ssh -R 80:localhost:3000 serveo.net
+```
+
+```
+ssh -R sudomain:80:localhost:3000 serveo.net
 ```
 
 ## 13. yarn and npm
