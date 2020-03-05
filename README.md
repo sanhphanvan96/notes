@@ -504,7 +504,10 @@ docker stop $(docker ps -q)    #stop all containers, forcefully: -f
 docker rm $(docker ps -a -q)   #remove all containers, forcefully: -f
 docker rmi $(docker images -q) #remove all docker images, forcefully: -f
 docker volume ls -qf dangling=true | xargs -r docker volume rm #remove all docker volumes
-docker rm (docker ps -a |grep redis |awk '{print $1}') #Remove all containers by image.ex: remove all redis containers:
+docker rm (docker ps -a |grep redis |awk '{print $1}') #Remove all containers by image.ex: remove all redis containers
+docker network create nginx-proxy
+# magic with docker buildkit
+DOCKER_BUILDKIT=1 docker build -t imagename -f multiplestages.Dockerfile .
 ```
 
 - Dockerfile
@@ -640,6 +643,9 @@ update-java-alternatives --set java-1.8.0-openjdk-amd64
 systemctl disable docker # disable boot service
 systemctl --user start pulseaudio
 systemctl --user status pulseaudio
+systemctl --type=service
+systemctl --type=service --state=active
+systemctl --type=service --state=running
 ```
 
 ## 7. sqlmap
@@ -732,8 +738,11 @@ From: /home/richard/Documents/eCommerceExample/spec/controllers/categories_contr
 
 ## 9. netstat
 
-```
+```sh
 netstat -anl | grep LIST | grep 3306
+# netstat: [--tcp|-t] [--udp|-u] [--listening|-l] [--program|-p] [--numeric|-n]
+netstat -tulpn | grep LISTEN
+# sudo netstat -tulpn | grep LISTEN
 ```
 
 ## 10. time
@@ -928,6 +937,7 @@ SHOW GRANTS FOR CURRENT_USER();
 ```bash
 openssl passwd -1 plain_password # => md5
 openssl prime 123456781
+openssl s_client -connect google.com.vn:443
 ```
 
 ## 9999. Some combine commands
