@@ -48,6 +48,25 @@ ansible all -i inventory_test -m setup -a "filter=ansible_mounts" --tree ./setup
 ansible-playbook -i hosts.local provision.yml --become
 ```
 
+## Example Playbook
+
+```
+---
+- hosts: local
+  tasks: 
+    - name: Upgrade all packages to the latest version
+      apt:  
+        update_cache: yes
+        upgrade: yes
+    - name: Remove useless packages from the cache
+      apt:
+        autoclean: yes
+    - name: Remove dependencies that are no longer required
+      apt:
+        autoremove: yes
+...
+```
+
 ## Roles => Making your playbooks reusable
 
 - Roles are a packages of closely related Ansible content that can be shared more easily than plays alone
