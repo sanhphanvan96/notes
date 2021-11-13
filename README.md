@@ -70,7 +70,7 @@ and change
 ZSH_THEME="gnzh"
 ```
 - Change default shell to ZSH for current user: ```sudo chsh -s /bin/zsh $(whoami)```
-## [Install Docker](https://www.ptrace-security.com/2017/06/14/hackontuesday-episode-7-how-to-install-docker-on-kali-linux-2017-1/)
+## [Install Docker](https://www.kali.org/docs/containers/installing-docker-on-kali/)
 
 ## [Install Docker Compose](https://docs.docker.com/compose/install/)
 
