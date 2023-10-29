@@ -11,10 +11,13 @@
     - [9. Installing multiple versions of Python](#9-installing-multiple-versions-of-python)
     - [10. Run, stop Docker from terminal](#10-run-stop-docker-from-terminal)
     - [11. Syntax highlighting in nano on Mac OS X](#11-syntax-highlighting-in-nano-on-mac-os-x)
+    - [12. My awesome HomeBrew list](#12-my-awesome-homebrew-list)
+    - [13. Proccess monitoring, remove leftovers, reset trial](#13-proccess-monitoring-remove-leftovers-reset-trial)
   - [Useful key shortcuts](#useful-key-shortcuts)
-    - [1. Show hidden files in Finder `shift + command + .`](#1-show-hidden-files-in-finder-shift--command)
+    - [1. Show hidden files in Finder `shift + command + .`](#1-show-hidden-files-in-finder-shift--command--)
   - [Error](#error)
     - [1. rails:](#1-rails)
+  - [Others commands:](#others-commands)
 
 # MacOS
 
@@ -135,7 +138,7 @@ function code {
 alias subl="/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl"
 
 # for ngrok
-alias ngrok="/Users/sanh/Downloads/ngrok/ngrok"
+alias ngrok="~/Downloads/ngrok/ngrok"
 
 # for pyenv
 eval "$(pyenv init -)"
@@ -179,6 +182,170 @@ export PATH=/usr/local/bin:$PATH
 include /usr/local/share/nano/*.nanorc
 ```
 
+### 12. My awesome HomeBrew list
+
+```
+brew analytics off
+```
+
+```
+brew list --cask
+brew install --cask iterm2 lulu jd-gui shottr vagrant vlc docker firefox
+```
+
+```
+➜  ~ brew list
+==> Formulae
+ansible			exiftool		hashcat			ffmpeg			trash
+aria2       ffuf			  htop        rclone      autojump
+bettercap		imagemagick		nmap			wget        ipinfo-cli
+fzf			    inetutils		wpscan      gcc			ipcalc
+jq			    libmpc
+dex2jar			jupyterlab		terraform
+
+```
+### 13. Proccess monitoring, remove leftovers, reset trial
+- lazy, just some notes, need to improve
+
+```bash
+brew install --cask lulu
+brew install --cask shottr # 30 days trial
+brew install trash
+sudo fs_usage | grep -e 'open' -e 'create' | grep shottr
+ sudo fs_usage -w -f filesys | grep -e 'open' | grep shottr
+```
+
+```
+sudo fs_usage | grep -e 'open' -e 'create' | grep shottr
+11:05:37  open              /Users/username/Library/Containers/cc.ffitch.shottr/Data/Library/Preferences        0.000534   cfprefsd
+11:05:37  openat            [3]/cc.ffitch.shottr.plist                                                       0.000046   cfprefsd
+11:05:37  openat            0lf5yz971bgw9c9yt0sjn300000gn/T/TemporaryItems/cc.ffitch.shottr.plist.hjsuz2E    0.000137   cfprefsd
+11:05:38  open              /Users/username/Library/Containers/cc.ffitch.shottr/Data/Library/Preferences        0.000046   cfprefsd
+11:05:38  openat            [3]/cc.ffitch.shottr.plist                                                       0.000030   cfprefsd
+11:05:38  openat            0lf5yz971bgw9c9yt0sjn300000gn/T/TemporaryItems/cc.ffitch.shottr.plist.j16V11D    0.001428   cfprefsd
+...
+```
+
+```
+$ sudo opensnoop -n Shottr | tee -a ~/tmp/opensnoop.shottr.txt
+dtrace: system integrity protection is on, some features will not be available
+
+  UID    PID COMM          FD PATH
+  501  25475 Shottr        10 /System/Library/Fonts/Keyboard.ttf
+  501  25475 Shottr        10 /System/Library/Frameworks/Carbon.framework/Versions/A/Frameworks/HIToolbox.framework/Resources
+  501  25475 Shottr        10 /System/Library/Frameworks/Carbon.framework/Versions/A/Frameworks/HIToolbox.framework/Resources
+  501  25475 Shottr        10 /System/Library/Frameworks/Carbon.framework/Versions/A/Frameworks/HIToolbox.framework/Resources/English.lproj
+  501  25475 Shottr        -1 /System/Library/Frameworks/Carbon.framework/Versions/A/Frameworks/HIToolbox.framework/Resources/Base.lproj
+  501  25475 Shottr        10 /System/Library/Frameworks/Carbon.framework/Versions/A/Frameworks/HIToolbox.framework/Resources/Menus.loctable
+  501  25475 Shottr        10 /System/Library/Frameworks/Carbon.framework/Versions/A/Frameworks/HIToolbox.framework/
+  501  25475 Shottr        -1 /System/Library/Frameworks/Carbon.framework/Versions/A/Frameworks/HIToolbox.framework//English.lproj
+  501  25475 Shottr        -1 /System/Library/Frameworks/Carbon.framework/Versions/A/Frameworks/HIToolbox.framework//Base.lproj
+  501  25475 Shottr        10 /System/Library/CoreServices/SystemAppearance.bundle/Contents/Resources/Graphite.car
+  501  25475 Shottr        10 /Applications/Shottr.app/Contents/Resources/Preferences.storyboardc/Info.plist
+  501  25475 Shottr        10 /Applications/Shottr.app/Contents/Resources/Preferences.storyboardc
+  501  25475 Shottr        10 /Applications/Shottr.app/Contents/Resources/Preferences.storyboardc
+  501  25475 Shottr        10 /Applications/Shottr.app/Contents/Resources/Preferences.storyboardc/Info.plist
+  501  25475 Shottr        10 /Applications/Shottr.app/Contents/Resources/Preferences.storyboardc
+  501  25475 Shottr        10 /Applications/Shottr.app/Contents/Resources/Preferences.storyboardc/
+  501  25475 Shottr        -1 /Applications/Shottr.app/Contents/Resources/Preferences.storyboardc//en.lproj
+  501  25475 Shottr        -1 /Applications/Shottr.app/Contents/Resources/Preferences.storyboardc//Base.lproj
+  501  25475 Shottr        10 /Applications/Shottr.app/Contents/Resources/Preferences.storyboardc/NSWindowController-3cz-fX-Ya1.nib
+  501  25475 Shottr        10 /Applications/Shottr.app/Contents/Resources/Preferences.storyboardc/vXi-bH-nTd-view-fki-md-Men.nib
+  501  25475 Shottr        10 /System/Library/Frameworks/AppKit.framework/Resources/Placeholders.loctable
+  501  25475 Shottr        10 /Applications/Shottr.app/Contents/Resources/Preferences.storyboardc/6sQ-om-XCe-view-qXZ-XU-bNz.nib
+  501  25475 Shottr        -1 /System/Library/CoreServices/RawCamera.bundle/RawCamera
+  501  25475 Shottr        10 /System/Library/CoreServices/RawCamera.bundle
+  501  25475 Shottr        -1 /System/Library/CoreServices/RawCamera.bundle/RawCamera
+  501  25475 Shottr        10 /System/Library/CoreServices/RawCamera.bundle
+  501  25475 Shottr        10 /dev/dtracehelper
+  501  25475 Shottr        10 /System/Library/PrivateFrameworks/SFSymbols.framework/Versions/A/Resources/CoreGlyphs.bundle/Contents/Resources/name_aliases.strings
+  501  25475 Shottr        10 /System/Library/PrivateFrameworks/SFSymbols.framework/Versions/A/Resources/CoreGlyphsPrivate.bundle
+  501  25475 Shottr        10 /System/Library/PrivateFrameworks/SFSymbols.framework/Versions/A/Resources/CoreGlyphsPrivate.bundle/Contents
+  501  25475 Shottr        10 /System/Library/PrivateFrameworks/SFSymbols.framework/Versions/A/Resources/CoreGlyphsPrivate.bundle/Contents/Info.plist
+  501  25475 Shottr        10 /System/Library/PrivateFrameworks/SFSymbols.framework/Versions/A/Resources/CoreGlyphsPrivate.bundle/Contents/Resources
+  501  25475 Shottr        10 /System/Library/PrivateFrameworks/SFSymbols.framework/Versions/A/Resources/CoreGlyphsPrivate.bundle/Contents/Resources
+  501  25475 Shottr        -1 /System/Library/PrivateFrameworks/SFSymbols.framework/Versions/A/Resources/CoreGlyphsPrivate.bundle/Contents/Resources/en.lproj
+  501  25475 Shottr        -1 /System/Library/PrivateFrameworks/SFSymbols.framework/Versions/A/Resources/CoreGlyphsPrivate.bundle/Contents/Resources/Base.lproj
+  501  25475 Shottr        10 /System/Library/PrivateFrameworks/SFSymbols.framework/Versions/A/Resources/CoreGlyphsPrivate.bundle/Contents/Resources/Assets.car
+  501  25475 Shottr        10 /System/Library/Frameworks/AppKit.framework/Resources/Accessibility.loctable
+  501  25475 Shottr        10 /Applications/Shottr.app/Contents/Resources/KeyboardShortcuts_KeyboardShortcuts.bundle
+  501  25475 Shottr        10 /Applications/Shottr.app/Contents/Resources/KeyboardShortcuts_KeyboardShortcuts.bundle/Contents
+  501  25475 Shottr        10 /Applications/Shottr.app/Contents/Resources/KeyboardShortcuts_KeyboardShortcuts.bundle/Contents/Info.plist
+  501  25475 Shottr        10 /Applications/Shottr.app/Contents/Resources/KeyboardShortcuts_KeyboardShortcuts.bundle/Contents/Resources
+  501  25475 Shottr        10 /Applications/Shottr.app/Contents/Resources/KeyboardShortcuts_KeyboardShortcuts.bundle/Contents/Resources
+  501  25475 Shottr        10 /Applications/Shottr.app/Contents/Resources/KeyboardShortcuts_KeyboardShortcuts.bundle/Contents/Resources/en.lproj
+  501  25475 Shottr        -1 /Applications/Shottr.app/Contents/Resources/KeyboardShortcuts_KeyboardShortcuts.bundle/Contents/Resources/Base.lproj
+  501  25475 Shottr        10 /Applications/Shottr.app/Contents/Resources/KeyboardShortcuts_KeyboardShortcuts.bundle/Contents/Resources/en.lproj/Localizable.strings
+  501  25475 Shottr        10 /Applications/Shottr.app/Contents/Resources/KeyboardShortcuts_KeyboardShortcuts.bundle/Contents/Resources/en.lproj/Localizable.strings
+  501  25475 Shottr        10 /Applications/Shottr.app/Contents/Resources/Preferences.storyboardc/NTL-U4-RCY-view-jEA-Ft-qg2.nib
+  501  25475 Shottr        10 /Applications/Shottr.app/Contents/Resources/Preferences.storyboardc/YPR-Ju-4pY-view-Mcz-Zk-Zk0.nib
+  501  25475 Shottr        10 /Applications/Shottr.app/Contents/PkgInfo
+  501  25475 Shottr        10 /System/Library/Frameworks/Foundation.framework/Resources
+  501  25475 Shottr        10 /var/folders/63/m0lf5yz971bgw9c9yt0sjn300000gn/C/com.apple.iconservices/store.index
+  501  25475 Shottr        10 /Library/Caches/com.apple.iconservices.store/590B9AFD-6BBD-3176-8EC4-1BAA803025AB.isdata
+```
+
+```
+cp ~/tmp/opensnoop.shottr.txt ~/tmp/file_access_log.txt
+awk '$NF ~ "^/" {print $NF}' ~/tmp/file_access_log.txt | grep -vE '^/System/|^/Library/' | grep -v "/Applications/Shottr.app" | grep -v "/dev/dtracehelper" | sort -
+
+/
+/Users/username/Library/Colors
+/Users/username/Library/Containers/cc.ffitch.shottr/Data/Library/Security
+/Users/username/Library/Keychains/login.keychain-db
+/etc/localtime
+/private/var/db/mds/messages/501/se_SecurityMessages
+/private/var/db/mds/system/mdsDirectory.db
+/private/var/db/mds/system/mdsObject.db
+/usr/lib/libobjc-trampolines.dylib
+/usr/share/icu/icudt70l.dat
+/var/db/timezone/icutz/icutz44l.dat
+/var/db/timezone/zoneinfo/posixrules
+/var/folders/63/m0lf5yz971bgw9c9yt0sjn300000gn/C/cc.ffitch.shottr//mds/mds.lock
+/var/folders/63/m0lf5yz971bgw9c9yt0sjn300000gn/C/cc.ffitch.shottr//mds/mdsDirectory.db
+/var/folders/63/m0lf5yz971bgw9c9yt0sjn300000gn/C/cc.ffitch.shottr//mds/mdsDirectory.db_
+/var/folders/63/m0lf5yz971bgw9c9yt0sjn300000gn/C/cc.ffitch.shottr//mds/mdsObject.db
+/var/folders/63/m0lf5yz971bgw9c9yt0sjn300000gn/C/cc.ffitch.shottr//mds/mdsObject.db_
+/var/folders/63/m0lf5yz971bgw9c9yt0sjn300000gn/C/cc.ffitch.shottr/com.apple.IntlDataCache.le
+```
+
+- uninstall the app, check leftovers
+
+```
+brew uninstall --cask shottr
+```
+
+```
+trash ~/Library/Containers/cc.ffitch.shottr
+awk '$NF ~ "^/" {print $NF}' file_access_log.txt | grep -vE '^/System/|^/Library/' | grep -v "/Applications/Shottr.app" | grep -v "/dev/dtracehelper" | sort -u | xargs -I{} sh -c 'if [ -e "$1" ]; then echo "$1 exists."; fi' sh {}
+
+/ exists.
+/Users/username/Library/Colors exists.
+/Users/username/Library/Keychains/login.keychain-db exists.
+/etc/localtime exists.
+/private/var/db/mds/messages/501/se_SecurityMessages exists.
+/private/var/db/mds/system/mdsDirectory.db exists.
+/private/var/db/mds/system/mdsObject.db exists.
+/usr/lib/libobjc-trampolines.dylib exists.
+/usr/share/icu/icudt70l.dat exists.
+/var/db/timezone/icutz/icutz44l.dat exists.
+/var/db/timezone/zoneinfo/posixrules exists.
+/var/folders/63/m0lf5yz971bgw9c9yt0sjn300000gn/C/cc.ffitch.shottr//mds/mds.lock exists.
+/var/folders/63/m0lf5yz971bgw9c9yt0sjn300000gn/C/cc.ffitch.shottr//mds/mdsDirectory.db exists.
+/var/folders/63/m0lf5yz971bgw9c9yt0sjn300000gn/C/cc.ffitch.shottr//mds/mdsObject.db exists.
+```
+
+To completely remove the app, you have to go over each of these folders one by one and delete the following:
+
+- Binary and dock icons are located in `/Applications/`
+- Application support files are located in `~/Library/Application Support`
+- Support Caches can be found in `/Library/Caches/` and `~/Library/Caches`
+- Plugins are located in `~/Library/Internet Plug-Ins/`
+- Library can be found in `~/Library/`
+- App preferences are located in `~/Library/Preferences/`
+- Crashes are found in `~/Library/Application Support/CrashReporter/`
+- App saved states are located in `~/Library/Saved Application State/`
+
 ## Useful key shortcuts
 
 ### 1. Show hidden files in Finder `shift + command + .`
@@ -209,3 +376,5 @@ In Gemfile:
 ```
 sudo gem install mysql2 -v '0.4.9' -- --srcdir=/usr/local/mysql/include
 ```
+
+## Others commands:
