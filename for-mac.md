@@ -196,12 +196,12 @@ brew install --cask iterm2 lulu jd-gui shottr vagrant vlc docker firefox
 ```
 ➜  ~ brew list
 ==> Formulae
-ansible			exiftool		hashcat			ffmpeg			trash
-aria2       ffuf			  htop        rclone      autojump
-bettercap		imagemagick		nmap			wget        ipinfo-cli
-fzf			    inetutils		wpscan      gcc			ipcalc
-jq			    libmpc
-dex2jar			jupyterlab		terraform
+ansible        ffuf           htop           rclone         autojump
+exiftool       imagemagick    nmap           wget           ipinfo-cli
+hashcat        fzf            inetutils      wpscan         gcc
+ffmpeg         jq             libmpc         dex2jar        jupyterlab
+trash          terraform
+
 
 ```
 ### 13. Proccess monitoring, remove leftovers, reset trial
