@@ -93,3 +93,10 @@ pm2 startup
 pm2 save
 pm2 list
 ```
+
+## Tmux config
+- ~/.tmux.conf
+```
+set -g mouse on
+set -g history-limit 5000
+```
