@@ -2,6 +2,7 @@
 
 - [README.md](README.md)
 - [ansible.md](ansible.md)
+- [asdf.md](asdf.md)
 - [aws.md](aws.md)
 - [cloudflared.md](cloudflared.md)
 - [colab.md](colab.md)
