@@ -37,7 +37,7 @@ flet build macos --arch arm64
 flet build macos --arch x86_64
 ```
 
-## Debug:
+## Troubleshooting:
 
 ### 
 ```bash
@@ -85,4 +85,10 @@ flutter doctor -v # to get Flutter installed location such as `Flutter version 3
 cd /Users/[user]/flutter/flutter
 git checkout 3.24.5
 flutter doctor -v
+```
+
+### Flet hot reload not working issue
+
+```python
+ft.app(target=main, view=ft.AppView.WEB_BROWSER, port=16000)
 ```
