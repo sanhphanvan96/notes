@@ -20,6 +20,10 @@ enable-peer-exchange=true
 bt-tracker=udp://tracker.openbittorrent.com:80,udp://tracker.opentrackr.org:1337,udp://tracker.coppersurfer.tk:6969
 ```
 
+```
+aria2c -c --conf-path=aria2.conf file.torrent
+```
+
 ## Speed up download file (local machine)
 ```
  aria2c -x 16 -s 64 --max-connection-per-server=16 --min-split-size=1M \
